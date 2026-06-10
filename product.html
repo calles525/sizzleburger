@@ -1,0 +1,181 @@
+<!-- product.html - Versión corregida con carrito integrado -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SizzleBurger | Menu</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Hanken+Grotesk:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: { outline: "#8e7164", "primary-fixed-dim": "#ffb693", background: "#fff8f6", "on-secondary-fixed": "#1c1b1b", "on-primary-fixed": "#351000", "error-container": "#ffdad6", "inverse-primary": "#ffb693", surface: "#fff8f6", "on-primary-fixed-variant": "#7a3000", "on-primary-container": "#572000", "on-surface-variant": "#5a4136", "on-tertiary-fixed": "#1a1c1c", "surface-bright": "#fff8f6", "tertiary-fixed": "#e2e2e2", "on-secondary-fixed-variant": "#474746", "inverse-on-surface": "#ffede6", primary: "#a04100", "surface-tint": "#a04100", "on-tertiary-fixed-variant": "#454747", tertiary: "#5d5f5f", "on-surface": "#261812", "on-secondary-container": "#636262", "on-primary": "#ffffff", "on-secondary": "#ffffff", "primary-container": "#ff6b00", "on-error-container": "#93000a", "surface-container-lowest": "#ffffff", "on-tertiary": "#ffffff", "on-tertiary-container": "#2f3132", "secondary-container": "#e2dfde", "surface-container-low": "#fff1eb", "surface-dim": "#efd5ca", "outline-variant": "#e2bfb0", "on-error": "#ffffff", error: "#ba1a1a", "surface-container-highest": "#f8ddd2", "surface-variant": "#f8ddd2", "secondary-fixed-dim": "#c8c6c5", "on-background": "#261812", "tertiary-container": "#989999", "secondary-fixed": "#e5e2e1", secondary: "#5f5e5e", "primary-fixed": "#ffdbcc", "surface-container-high": "#fee3d8", "inverse-surface": "#3d2d26", "surface-container": "#ffeae1", "tertiary-fixed-dim": "#c6c6c7" },
+        borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px" },
+        spacing: { xs: "4px", lg: "48px", gutter: "16px", xl: "80px", sm: "12px", "container-max": "1280px", md: "24px", base: "8px" },
+        fontFamily: { "headline-md": ["Plus Jakarta Sans"], "body-md": ["Hanken Grotesk"], "headline-lg": ["Plus Jakarta Sans"], "headline-lg-mobile": ["Plus Jakarta Sans"], "label-md": ["Hanken Grotesk"], "body-lg": ["Hanken Grotesk"], "headline-xl": ["Plus Jakarta Sans"], "price-display": ["Plus Jakarta Sans"] },
+        fontSize: { "headline-md": ["24px", { lineHeight: "32px", fontWeight: "700" }], "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }], "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "800" }], "headline-lg-mobile": ["28px", { lineHeight: "34px", letterSpacing: "-0.01em", fontWeight: "800" }], "label-md": ["14px", { lineHeight: "20px", letterSpacing: "0.05em", fontWeight: "600" }], "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }], "headline-xl": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "800" }], "price-display": ["20px", { lineHeight: "24px", fontWeight: "800" }] }
+      }
+    }
+  }
+</script>
+<style>
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+  .scale-active:active { transform: scale(0.98); }
+  .hide-scrollbar::-webkit-scrollbar { display: none; }
+  .cart-added { animation: pulse 0.3s ease; }
+  @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+</style>
+</head>
+<body class="bg-background text-on-surface">
+
+<header class="bg-surface shadow-[0px_4px_20px_rgba(0,0,0,0.05)] sticky top-0 z-50">
+<nav class="flex justify-between items-center w-full px-gutter py-base max-w-container-max mx-auto">
+<a class="text-headline-md font-headline-md font-extrabold text-primary" href="index.html">SizzleBurger</a>
+<div class="hidden md:flex items-center gap-md">
+<a class="font-label-md text-label-md text-primary border-b-2 border-primary pb-1" href="product.html">Menu</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary" href="sucursales.html">Branches</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary" href="index.html#offers">Offers</a>
+</div>
+<div class="flex items-center gap-md">
+<a href="carrito.html" class="relative p-2 rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-primary">shopping_cart</span>
+<span class="absolute -top-1 -right-1 bg-primary-container text-on-primary-container text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-surface" id="cart-badge">0</span>
+</a>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
+<img alt="User" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoFtXdUsyGLxj5FT4VxQ2TV5VUHt4h_QFvwlECsR6vSbbAAP34yRU0JAE4lEbtDtQBVCNzTRE4pwozJKx81kyX0G6LuUFWTES0SXxwB7VVzLMX0HRpANI6CsCGgg2FM6iVkvKBWi6HNN6hN-qOvD3kWXwKQMV9sxmBNl-GbFhjm5zGzUTQukjXDaLnT9EsOTextrrf5QfFidYNX2yetBttPnOY2m4hKVW9FXeTRYZY22vmys5kzDbOmBeyuWE8DI826bNR3Bdx53I"/>
+</div>
+</div>
+</nav>
+</header>
+
+<main class="max-w-container-max mx-auto px-gutter pb-xl">
+<section class="py-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-lg">
+<div><h1 class="font-headline-xl text-headline-xl text-on-surface">Our Menu</h1><p class="font-body-lg text-on-surface-variant">Premium smash burgers and sides</p></div>
+<div class="w-full md:max-w-md"><div class="relative"><input class="w-full h-14 pl-12 pr-4 rounded-xl border-outline-variant bg-surface-container-lowest focus:border-primary focus:ring-1 focus:ring-primary" placeholder="Search menu..." type="text" id="search-input"/><span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span></div></div>
+</div>
+<div class="flex gap-sm overflow-x-auto hide-scrollbar pb-xs" id="category-filters">
+  <button class="active-chip px-md py-2.5 rounded-full font-label-md whitespace-nowrap bg-inverse-surface text-white" data-cat="all">🍔 All</button>
+  <button class="bg-secondary-container text-on-surface px-md py-2.5 rounded-full font-label-md whitespace-nowrap hover:bg-outline-variant" data-cat="burgers">🍔 Burgers</button>
+  <button class="bg-secondary-container text-on-surface px-md py-2.5 rounded-full font-label-md whitespace-nowrap hover:bg-outline-variant" data-cat="sides">🍟 Sides</button>
+  <button class="bg-secondary-container text-on-surface px-md py-2.5 rounded-full font-label-md whitespace-nowrap hover:bg-outline-variant" data-cat="drinks">🥤 Drinks</button>
+</div>
+</section>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-md" id="products-grid"></div>
+</main>
+
+<footer class="bg-surface-container-highest mt-xl py-xl px-gutter">
+<div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-4 gap-md">
+<div><a class="text-headline-sm font-headline-sm font-bold text-on-surface" href="index.html">SizzleBurger</a><p class="text-on-surface-variant mt-md">Delivering the finest smash burgers since 2024.</p></div>
+<div><h5 class="font-label-md text-primary mb-md">Quick Links</h5><ul><li><a class="text-on-surface-variant hover:underline" href="product.html">Menu</a></li><li><a class="text-on-surface-variant hover:underline" href="sucursales.html">Branches</a></li></ul></div>
+<div><h5 class="font-label-md text-primary mb-md">Support</h5><ul><li><a class="text-on-surface-variant hover:underline" href="#">Privacy Policy</a></li><li><a class="text-on-surface-variant hover:underline" href="#">Terms of Service</a></li></ul></div>
+<div><p class="text-on-surface-variant">© 2024 SizzleBurger Inc.</p></div>
+</div>
+</footer>
+
+<script>
+// Catálogo completo de productos
+const products = [
+  { id: "p1", name: "Sizzle Classic", price: 12.99, category: "burgers", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCFJlK-zNEBI1nClOudXrUztswc_MHIqQBdB5tv_iQ5FW1xgEuqUhsMrT58TybaSxtsgRbQ1uKxST6cG2K8BDIKfrZIgXJde9HlXQEJOl_lPtJ1clFUFaOF7ufJWZlV2D4oO9RxIs5dpBsje0pAqEpbmOo9LWz2USmXAm4w9_2WD7OXvNUscXccninEZCwDknGlayL29AOseUzj9AGCnnABP7X4CYKHNAo3HVkRgyC1ZXHL02sGAuIcii6FNJY6AT28OIMJWEiaM5U", desc: "Double smash patty, secret sauce, pickles" },
+  { id: "p2", name: "Truffle Swiss", price: 15.50, category: "burgers", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuArY_6iYfjCIDQVZV0-uHUcxektkepEbbf_3sj3csRK3YcPAERW4nmChYh-CdfqXf2gu8YCf0WgcmeRFeyYVS2rN1UVDEGZnG-0Iyr7618ITqMmxAodDNxGffZCiV1l6CSD9uQbhnIGMw8dnDS9-H2uho_BUiPh-t6rRozIbeRSEMt8hD79mdTTr6pL1YB1uDJgPf1A02KwOfxOOlCFN6SVLgTYB_68SP_q8dZKlcv5ZkMgOmcSeLNoxtz4f7A2XIDUB0FxniNaQ0I", desc: "Mushrooms, Swiss, truffle garlic aioli" },
+  { id: "p3", name: "Spicy Inferno", price: 13.99, category: "burgers", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD4wTpQGpphhrNyDgiYcYMmH8RWNInWeM9ZTPJzzdNxm-zQUcnDlYTRQlDuAh7QalXF1esr_k08IgH8IYG_lQqC_p5uUTdVbKyZYvKQ5suIm3rK5BAgNZPGWy0WTgEu5pF0iigSHa9a0E2dVfcH0tQIupaRd6e59fEBqJwrIf2jPMWtvKzSvN9m6ngGEOUPbPWbJAm_z-b9DIsJFMUc24Rso4sT8sM7JOOpDFjiYb3-D5MlLXpiRSaW-74egcuKGzLzoXxmKfmEfSo", desc: "Habanero chicken, pepper jack, jalapeño slaw" },
+  { id: "p4", name: "BBQ Smokehouse", price: 14.75, category: "burgers", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuABUQLQABgZZLz7HcL0tBwJSzaB4fW-wkLQIkvyOQgRroQyMBONyFaCmP5V39WpQ2jgAmyu45vH96l6zQARn2-9W8-OIaa9R9BWdAneg_CpmjLcWmA7Tbkt3TfbqlvIwuzNlpxSKeca50__OjZai0rzD6uS-1mwhTbOaitqS6XM98Xrk282NCLAW6L_-zKRuYiNzQvVKdQRoZTCNO2-YZ-q7iDNGQyj7Bevmgaa7Cd6929277BdkySblrO_n_NMOry9OIMbsry5LME", desc: "Applewood bacon, onion rings, honey BBQ" },
+  { id: "p5", name: "Loaded Sizzle Fries", price: 7.50, category: "sides", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBWTBpLRyU8dfYFDAd61OtWioOtIrzNBgSPnDxG0Vv3F_jDvzojQXWxkKv-EKu4yb8THQPEhYgRj90VJ4x4s9sa5yrIH7bYJLzw4BP4CjIyCqs-BYl0iPiiTK7OIh5PWUHAfrBNj6fNlnK7rO0U3ycaCLLPEuRqluumjJw5H97FMqm-hyFi4fJsNHxovRlp2rS2Ak3VcooL_r8QamHuk5XF0x8XPbRDVDbt85W-yf7NKadM5OCfpuzUcSTov0AIq2Qjv9_Qmiob09w", desc: "Cheese sauce, bacon bits, green onion" },
+  { id: "p6", name: "Salted Caramel Shake", price: 6.99, category: "drinks", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDX5VOW9uoxukjlNmEZK8L3h9EDjCfrgA3iQInk7gyck45Lh2MfBHfkm-2epBAYbOZm4DrmxYtGEVeaCmxDKiqwkNR0urnw75ksHwaDeCEz-tEVWl6PJI-siknMLTHugQ3OfDQanePyEEksL4Izt7MpyIU8Wogaknq4xO1BfbBm_4aDNp0GhxbttjMmkx-4F1bgTgLYTeD3ED-UYrmPAkMuRXdT16vlqK6RbPgD7kqKwoh4hHDMuP2xbpWIYw-Bn2xJAPIAM8eBhAs", desc: "Vanilla bean ice cream, salted caramel" },
+  { id: "p7", name: "The Green Smash", price: 14.00, category: "burgers", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD_CQpr-ozXsPSWOo-OzImCmpaFklNOv1XuhewBlB2NvHyhb3WXJLWyDLr8PeBG9x6DGagf2gCrAJ1rEbERh4v5pX0rYowmZc0vQy6l62xCoiMN1WEJDTiunU17cY6zlWtgP8bytVWmfdHoYkNtgUuujn8HB7u1zo99IG3HVcvkOGSE0EOG0pvfGOT8x9pGhMz5MhiIRIp15QXlLk10r7bRVlKsqpty_Bcjch3eOVxfINb55WXdcJyXsR7HFv2xF-i7DysXQwVQCTA", desc: "Beet & quinoa patty, avocado, sprouts" },
+  { id: "p8", name: "Crispy Wings", price: 11.25, category: "sides", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBJ2PeB2x2WPZX_Dj3BKbpt_Zr-QuSLBkNIv7ccmx4WztYYnx9ixvHb1QntRjBqSAhagVpYYi68DBk4GUldNRbkbjsv6g6pLjodwJd3EyxQjY9R7hMBthGA1oyvAxAFYePRrhwMKs1hNYF7dqXhXnrV_nMLPJXnv87PMtK5CWhNPury1QqNx7INnW0Dni3vNXg9Jogpk7ECK_jQwilDSBt9BGM48DYgzwV2gq7BJ5Nsi-jZMUC7o7pXWZ9eGW-zJNRL0ng5pufLlAk", desc: "6 jumbo wings, Buffalo or Garlic Parm" }
+];
+
+// Sistema de Carrito
+let cart = JSON.parse(localStorage.getItem('sizzle_cart')) || [];
+
+function saveCart() {
+  localStorage.setItem('sizzle_cart', JSON.stringify(cart));
+  updateCartBadge();
+}
+
+function updateCartBadge() {
+  const badge = document.getElementById('cart-badge');
+  if (badge) {
+    const total = cart.reduce((sum, item) => sum + item.quantity, 0);
+    badge.textContent = total;
+    badge.classList.toggle('hidden', total === 0);
+  }
+}
+
+function addToCart(productId, name, price, image) {
+  const existing = cart.find(item => item.id === productId);
+  if (existing) {
+    existing.quantity++;
+  } else {
+    cart.push({ id: productId, name, price, image, quantity: 1 });
+  }
+  saveCart();
+  
+  const btn = event?.target?.closest('button');
+  if (btn) {
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '<span class="material-symbols-outlined">check</span> Added!';
+    setTimeout(() => { btn.innerHTML = originalText; }, 1500);
+  }
+}
+
+function renderProducts(filter = "all", search = "") {
+  const container = document.getElementById('products-grid');
+  if (!container) return;
+  
+  let filtered = products;
+  if (filter !== "all") filtered = filtered.filter(p => p.category === filter);
+  if (search) filtered = filtered.filter(p => p.name.toLowerCase().includes(search.toLowerCase()) || p.desc.toLowerCase().includes(search.toLowerCase()));
+  
+  container.innerHTML = filtered.map(p => `
+    <div class="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all flex flex-col group">
+      <div class="h-56 overflow-hidden relative"><img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"></div>
+      <div class="p-md flex flex-col flex-1">
+        <div class="flex justify-between items-start mb-2"><h3 class="font-headline-md text-headline-md">${p.name}</h3><span class="font-price-display text-price-display text-primary">$${p.price}</span></div>
+        <p class="text-on-surface-variant font-body-md mb-md flex-grow">${p.desc}</p>
+        <button onclick="addToCart('${p.id}', '${p.name}', ${p.price}, '${p.image}')" class="w-full bg-primary-container text-on-primary py-3 rounded-xl font-bold flex items-center justify-center gap-2 active:scale-95 transition-all">
+          <span class="material-symbols-outlined">add_shopping_cart</span> Add to Cart
+        </button>
+      </div>
+    </div>
+  `).join('');
+}
+
+// Inicialización
+document.addEventListener('DOMContentLoaded', () => {
+  renderProducts();
+  updateCartBadge();
+  window.addToCart = addToCart;
+  
+  // Filtros por categoría
+  document.querySelectorAll('#category-filters button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#category-filters button').forEach(b => {
+        b.classList.remove('bg-inverse-surface', 'text-white');
+        b.classList.add('bg-secondary-container', 'text-on-surface');
+      });
+      btn.classList.remove('bg-secondary-container', 'text-on-surface');
+      btn.classList.add('bg-inverse-surface', 'text-white');
+      const searchVal = document.getElementById('search-input')?.value || '';
+      renderProducts(btn.dataset.cat, searchVal);
+    });
+  });
+  
+  // Búsqueda
+  const searchInput = document.getElementById('search-input');
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      const activeCat = document.querySelector('#category-filters button.bg-inverse-surface')?.dataset.cat || 'all';
+      renderProducts(activeCat, e.target.value);
+    });
+  }
+});
+</script>
+</body>
+</html>

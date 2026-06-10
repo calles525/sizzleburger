@@ -1,0 +1,215 @@
+<!-- carrito.html - Versión corregida -->
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Your Cart | SizzleBurger</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Hanken+Grotesk:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: { outline: "#8e7164", "primary-fixed-dim": "#ffb693", background: "#fff8f6", "on-secondary-fixed": "#1c1b1b", "on-primary-fixed": "#351000", "error-container": "#ffdad6", "inverse-primary": "#ffb693", surface: "#fff8f6", "on-primary-fixed-variant": "#7a3000", "on-primary-container": "#572000", "on-surface-variant": "#5a4136", "on-tertiary-fixed": "#1a1c1c", "surface-bright": "#fff8f6", "tertiary-fixed": "#e2e2e2", "on-secondary-fixed-variant": "#474746", "inverse-on-surface": "#ffede6", primary: "#a04100", "surface-tint": "#a04100", "on-tertiary-fixed-variant": "#454747", tertiary: "#5d5f5f", "on-surface": "#261812", "on-secondary-container": "#636262", "on-primary": "#ffffff", "on-secondary": "#ffffff", "primary-container": "#ff6b00", "on-error-container": "#93000a", "surface-container-lowest": "#ffffff", "on-tertiary": "#ffffff", "on-tertiary-container": "#2f3132", "secondary-container": "#e2dfde", "surface-container-low": "#fff1eb", "surface-dim": "#efd5ca", "outline-variant": "#e2bfb0", "on-error": "#ffffff", error: "#ba1a1a", "surface-container-highest": "#f8ddd2", "surface-variant": "#f8ddd2", "secondary-fixed-dim": "#c8c6c5", "on-background": "#261812", "tertiary-container": "#989999", "secondary-fixed": "#e5e2e1", secondary: "#5f5e5e", "primary-fixed": "#ffdbcc", "surface-container-high": "#fee3d8", "inverse-surface": "#3d2d26", "surface-container": "#ffeae1", "tertiary-fixed-dim": "#c6c6c7" },
+        borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px" },
+        spacing: { xs: "4px", lg: "48px", gutter: "16px", xl: "80px", sm: "12px", "container-max": "1280px", md: "24px", base: "8px" },
+        fontFamily: { "headline-md": ["Plus Jakarta Sans"], "body-md": ["Hanken Grotesk"], "headline-lg": ["Plus Jakarta Sans"], "headline-lg-mobile": ["Plus Jakarta Sans"], "label-md": ["Hanken Grotesk"], "body-lg": ["Hanken Grotesk"], "headline-xl": ["Plus Jakarta Sans"], "price-display": ["Plus Jakarta Sans"] },
+        fontSize: { "headline-md": ["24px", { lineHeight: "32px", fontWeight: "700" }], "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }], "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "800" }], "headline-lg-mobile": ["28px", { lineHeight: "34px", letterSpacing: "-0.01em", fontWeight: "800" }], "label-md": ["14px", { lineHeight: "20px", letterSpacing: "0.05em", fontWeight: "600" }], "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }], "headline-xl": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "800" }], "price-display": ["20px", { lineHeight: "24px", fontWeight: "800" }] }
+      }
+    }
+  }
+</script>
+<style>
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+  .cart-item-enter { animation: slideIn 0.3s ease-out forwards; }
+  @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  .scale-active:active { transform: scale(0.98); }
+</style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col">
+
+<header class="bg-surface shadow-[0px_4px_20px_rgba(0,0,0,0.05)] sticky top-0 z-50">
+<nav class="flex justify-between items-center w-full px-gutter py-base max-w-container-max mx-auto">
+<a class="text-headline-md font-headline-md font-extrabold text-primary" href="index.html">SizzleBurger</a>
+<div class="hidden md:flex items-center gap-md">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary" href="product.html">Menu</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary" href="sucursales.html">Branches</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary" href="index.html">Offers</a>
+</div>
+<div class="flex items-center gap-sm">
+<a href="carrito.html" class="relative p-base scale-active transition-transform duration-150">
+<span class="material-symbols-outlined text-primary">shopping_cart</span>
+<span class="absolute top-1 right-1 bg-primary-container text-on-primary-container text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-surface" id="cart-badge">0</span>
+</a>
+<img alt="User Profile" class="w-8 h-8 rounded-full border border-outline-variant object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1WWmHu_Y28XM7gZS4AHjwFRLIt8nPxR6BJaRwuctXJTGaqb26GFY1g12lJzEMwClu37rWL7YlYgs62dTvbi3Fpcu1jfsBUI-7XfwaSLsqRLWyJwMSm7FjnSnRhupT23eIKVQT5KSqCm4AtS6Bu7WgfoHfx3M6jc2fISY1Mo6BNQTPixMTVAonM5azFzCUueSK-2fz4TnOJglE_HqhrvFQh4SLleDUg8E6wEDlBQo9N_TxjwAQFaq1go8vDCMh1F2uStPnuR8QJeg"/>
+</div>
+</nav>
+</header>
+
+<main class="flex-grow max-w-container-max w-full mx-auto px-gutter py-lg">
+<div class="flex flex-col lg:flex-row gap-lg">
+<div class="flex-grow">
+<div class="flex items-center justify-between mb-md">
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg">Your Cart</h1>
+<button class="text-primary font-label-md text-label-md hover:underline" onclick="clearCart()">Clear all</button>
+</div>
+<div class="hidden flex-col items-center justify-center py-xl bg-surface-container-lowest rounded-xl border-2 border-dashed border-outline-variant" id="empty-cart">
+<span class="material-symbols-outlined text-6xl text-outline-variant mb-md">shopping_basket</span>
+<p class="font-headline-md text-headline-md text-on-surface-variant">Your cart is empty</p>
+<p class="font-body-md text-body-md text-secondary mb-md">Add some sizzle to your day!</p>
+<a href="product.html" class="bg-primary-container text-on-primary-container px-lg py-sm rounded-full font-label-md text-label-md scale-active transition-transform">Browse Menu</a>
+</div>
+<div class="space-y-md" id="cart-items-container"></div>
+</div>
+<aside class="w-full lg:w-[400px]">
+<div class="bg-surface-container rounded-2xl p-md shadow-lg sticky top-24 border border-outline-variant">
+<h2 class="font-headline-md text-headline-md mb-md">Order Summary</h2>
+<div class="space-y-sm mb-md pb-md border-b border-outline-variant">
+<div class="flex justify-between"><span class="text-on-surface-variant">Subtotal</span><span class="font-bold" id="summary-subtotal">$0.00</span></div>
+<div class="flex justify-between"><span class="text-on-surface-variant">Delivery Fee</span><span id="summary-delivery">$2.99</span></div>
+<div class="flex justify-between"><span class="text-on-surface-variant">Estimated Tax</span><span id="summary-tax">$0.00</span></div>
+</div>
+<div class="flex justify-between items-center mb-lg"><span class="font-headline-md text-headline-md">Total</span><span class="font-headline-lg text-headline-lg text-primary" id="summary-total">$0.00</span></div>
+<a href="checkout.html" class="w-full bg-primary-container text-on-primary-container font-headline-md text-headline-md py-md rounded-xl shadow-md hover:brightness-110 transition-all scale-active flex items-center justify-center gap-base mb-md" id="checkout-btn">Go to Checkout <span class="material-symbols-outlined">arrow_forward</span></a>
+<div class="flex items-center justify-center gap-xs text-on-surface-variant font-label-md"><span class="material-symbols-outlined text-sm">verified</span>Secure payment processing</div>
+</div>
+</aside>
+</div>
+</main>
+
+<footer class="bg-surface-container-highest mt-xl py-xl px-gutter">
+<div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-4 gap-md">
+<div><a class="text-headline-sm font-headline-sm font-bold text-on-surface" href="index.html">SizzleBurger</a><p class="text-on-surface-variant mt-md">Serving the tastiest burgers in town since 2012.</p></div>
+<div><h5 class="font-label-md text-primary mb-md">Helpful Links</h5><ul><li><a class="text-on-surface-variant hover:underline" href="#">Privacy Policy</a></li><li><a class="text-on-surface-variant hover:underline" href="#">Terms of Service</a></li></ul></div>
+<div><h5 class="font-label-md text-primary mb-md">Contact</h5><p class="text-on-surface-variant">support@sizzleburger.com</p><p class="text-on-surface-variant">1-800-SIZZLE</p></div>
+<div><p class="text-on-surface-variant">© 2024 SizzleBurger Inc.</p></div>
+</div>
+</footer>
+
+<div class="md:hidden fixed bottom-0 left-0 right-0 bg-surface border-t border-outline-variant p-md shadow-lg flex items-center justify-between z-50">
+<div><p class="font-label-md text-secondary">Total</p><p class="font-price-display text-price-display text-primary" id="mobile-total">$0.00</p></div>
+<a href="checkout.html" class="bg-primary-container text-on-primary-container px-lg py-sm rounded-full font-headline-md shadow-md">Checkout</a>
+</div>
+
+<script>
+// Sistema de Carrito Global
+let cart = JSON.parse(localStorage.getItem('sizzle_cart')) || [];
+
+function saveCart() {
+  localStorage.setItem('sizzle_cart', JSON.stringify(cart));
+  updateCartBadge();
+  renderCartItems();
+}
+
+function updateCartBadge() {
+  const badge = document.getElementById('cart-badge');
+  if (badge) {
+    const total = cart.reduce((sum, item) => sum + item.quantity, 0);
+    badge.textContent = total;
+  }
+}
+
+function updateQty(id, delta) {
+  const item = cart.find(i => i.id === id);
+  if (item) {
+    item.quantity += delta;
+    if (item.quantity <= 0) {
+      cart = cart.filter(i => i.id !== id);
+    }
+    saveCart();
+  }
+}
+
+function removeItem(id) {
+  cart = cart.filter(i => i.id !== id);
+  saveCart();
+}
+
+function clearCart() {
+  cart = [];
+  saveCart();
+}
+
+function renderCartItems() {
+  const container = document.getElementById('cart-items-container');
+  const emptyState = document.getElementById('empty-cart');
+  
+  if (!container) return;
+  
+  if (cart.length === 0) {
+    container.innerHTML = '';
+    emptyState.classList.remove('hidden');
+    emptyState.classList.add('flex');
+    document.getElementById('summary-subtotal').textContent = '$0.00';
+    document.getElementById('summary-tax').textContent = '$0.00';
+    document.getElementById('summary-total').textContent = '$0.00';
+    document.getElementById('mobile-total').textContent = '$0.00';
+    return;
+  }
+  
+  emptyState.classList.add('hidden');
+  emptyState.classList.remove('flex');
+  
+  let subtotal = 0;
+  let itemsHtml = '';
+  
+  cart.forEach(item => {
+    const itemSubtotal = item.price * item.quantity;
+    subtotal += itemSubtotal;
+    itemsHtml += `
+      <div class="cart-item-enter bg-surface rounded-xl p-md flex flex-col sm:flex-row gap-md items-center shadow-md border border-surface-container-high" data-id="${item.id}">
+        <div class="w-full sm:w-32 h-32 rounded-lg overflow-hidden flex-shrink-0"><img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover"></div>
+        <div class="flex-grow w-full text-center sm:text-left"><h3 class="font-headline-md text-headline-md">${item.name}</h3><p class="text-primary font-price-display text-price-display mt-xs">$${item.price.toFixed(2)}</p></div>
+        <div class="flex items-center gap-md">
+          <div class="flex items-center bg-secondary-container rounded-full p-xs">
+            <button class="w-10 h-10 flex items-center justify-center rounded-full transition-colors scale-active" onclick="updateQty('${item.id}', -1)"><span class="material-symbols-outlined">remove</span></button>
+            <span class="w-10 text-center font-bold">${item.quantity}</span>
+            <button class="w-10 h-10 flex items-center justify-center rounded-full transition-colors scale-active" onclick="updateQty('${item.id}', 1)"><span class="material-symbols-outlined">add</span></button>
+          </div>
+          <div class="text-right min-w-[80px]"><p class="font-price-display text-price-display text-on-surface">$${itemSubtotal.toFixed(2)}</p></div>
+          <button class="text-outline hover:text-error transition-colors p-base" onclick="removeItem('${item.id}')"><span class="material-symbols-outlined">delete</span></button>
+        </div>
+      </div>
+    `;
+  });
+  
+  container.innerHTML = itemsHtml;
+  
+  const delivery = subtotal > 0 ? 2.99 : 0;
+  const tax = subtotal * 0.08;
+  const total = subtotal + delivery + tax;
+  
+  document.getElementById('summary-subtotal').textContent = `$${subtotal.toFixed(2)}`;
+  document.getElementById('summary-delivery').textContent = delivery > 0 ? `$${delivery.toFixed(2)}` : '$0.00';
+  document.getElementById('summary-tax').textContent = `$${tax.toFixed(2)}`;
+  document.getElementById('summary-total').textContent = `$${total.toFixed(2)}`;
+  document.getElementById('mobile-total').textContent = `$${total.toFixed(2)}`;
+}
+
+// Exponer funciones globalmente
+window.updateQty = updateQty;
+window.removeItem = removeItem;
+window.clearCart = clearCart;
+
+// Inicialización
+document.addEventListener('DOMContentLoaded', () => {
+  renderCartItems();
+  updateCartBadge();
+  
+  // Guardar subtotal para checkout
+  const checkoutBtn = document.getElementById('checkout-btn');
+  if (checkoutBtn) {
+    checkoutBtn.addEventListener('click', (e) => {
+      if (cart.length === 0) {
+        e.preventDefault();
+        alert('Your cart is empty!');
+      }
+    });
+  }
+});
+</script>
+</body>
+</html>

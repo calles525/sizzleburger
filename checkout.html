@@ -1,0 +1,177 @@
+<!-- checkout.html - Versión corregida con datos del carrito -->
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Checkout | SizzleBurger</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Hanken+Grotesk:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: { outline: "#8e7164", "primary-fixed-dim": "#ffb693", background: "#fff8f6", "on-secondary-fixed": "#1c1b1b", "on-primary-fixed": "#351000", "error-container": "#ffdad6", "inverse-primary": "#ffb693", surface: "#fff8f6", "on-primary-fixed-variant": "#7a3000", "on-primary-container": "#572000", "on-surface-variant": "#5a4136", "on-tertiary-fixed": "#1a1c1c", "surface-bright": "#fff8f6", "tertiary-fixed": "#e2e2e2", "on-secondary-fixed-variant": "#474746", "inverse-on-surface": "#ffede6", primary: "#a04100", "surface-tint": "#a04100", "on-tertiary-fixed-variant": "#454747", tertiary: "#5d5f5f", "on-surface": "#261812", "on-secondary-container": "#636262", "on-primary": "#ffffff", "on-secondary": "#ffffff", "primary-container": "#ff6b00", "on-error-container": "#93000a", "surface-container-lowest": "#ffffff", "on-tertiary": "#ffffff", "on-tertiary-container": "#2f3132", "secondary-container": "#e2dfde", "surface-container-low": "#fff1eb", "surface-dim": "#efd5ca", "outline-variant": "#e2bfb0", "on-error": "#ffffff", error: "#ba1a1a", "surface-container-highest": "#f8ddd2", "surface-variant": "#f8ddd2", "secondary-fixed-dim": "#c8c6c5", "on-background": "#261812", "tertiary-container": "#989999", "secondary-fixed": "#e5e2e1", secondary: "#5f5e5e", "primary-fixed": "#ffdbcc", "surface-container-high": "#fee3d8", "inverse-surface": "#3d2d26", "surface-container": "#ffeae1", "tertiary-fixed-dim": "#c6c6c7" },
+        borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px" },
+        spacing: { xs: "4px", lg: "48px", gutter: "16px", xl: "80px", sm: "12px", "container-max": "1280px", md: "24px", base: "8px" },
+        fontFamily: { "headline-md": ["Plus Jakarta Sans"], "body-md": ["Hanken Grotesk"], "headline-lg": ["Plus Jakarta Sans"], "headline-lg-mobile": ["Plus Jakarta Sans"], "label-md": ["Hanken Grotesk"], "body-lg": ["Hanken Grotesk"], "headline-xl": ["Plus Jakarta Sans"], "price-display": ["Plus Jakarta Sans"] },
+        fontSize: { "headline-md": ["24px", { lineHeight: "32px", fontWeight: "700" }], "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }], "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "800" }], "headline-lg-mobile": ["28px", { lineHeight: "34px", letterSpacing: "-0.01em", fontWeight: "800" }], "label-md": ["14px", { lineHeight: "20px", letterSpacing: "0.05em", fontWeight: "600" }], "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }], "headline-xl": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "800" }], "price-display": ["20px", { lineHeight: "24px", fontWeight: "800" }] }
+      }
+    }
+  }
+</script>
+<style>
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+</style>
+</head>
+<body class="bg-background text-on-background">
+
+<header class="sticky top-0 z-50 shadow-md bg-surface">
+<nav class="flex justify-between items-center w-full px-gutter py-base max-w-container-max mx-auto">
+<a class="text-headline-md font-headline-md font-extrabold text-primary" href="index.html">SizzleBurger</a>
+<div class="flex items-center gap-sm">
+<a href="carrito.html" class="p-2 rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined text-primary">shopping_cart</span>
+</a>
+</div>
+</nav>
+</header>
+
+<main class="max-w-container-max mx-auto px-gutter py-lg">
+<div class="mb-lg"><h1 class="font-headline-xl text-headline-xl text-on-surface">Secure Checkout</h1><p class="font-body-lg text-on-surface-variant">Review your items and complete your order.</p></div>
+
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg items-start">
+<div class="lg:col-span-7 space-y-md">
+  <section class="bg-surface-container-lowest p-md rounded-xl shadow-md border border-outline-variant">
+    <div class="flex items-center gap-sm mb-md"><span class="material-symbols-outlined text-primary">person</span><h2 class="font-headline-md text-headline-md">Contact Details</h2></div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+      <div><label class="font-label-md text-on-surface-variant">Full Name</label><input class="w-full h-14 rounded-lg border-outline-variant focus:border-primary bg-surface px-md" placeholder="John Doe" type="text" id="full-name"/></div>
+      <div><label class="font-label-md text-on-surface-variant">Phone Number</label><input class="w-full h-14 rounded-lg border-outline-variant focus:border-primary bg-surface px-md" placeholder="+1 (555) 000-0000" type="tel" id="phone"/></div>
+    </div>
+  </section>
+
+  <section class="bg-surface-container-lowest p-md rounded-xl shadow-md border border-outline-variant">
+    <div class="flex items-center gap-sm mb-md"><span class="material-symbols-outlined text-primary">local_shipping</span><h2 class="font-headline-md text-headline-md">Delivery Information</h2></div>
+    <div class="space-y-md">
+      <div><label class="font-label-md text-on-surface-variant">Street Address</label><input class="w-full h-14 rounded-lg border-outline-variant focus:border-primary bg-surface px-md" placeholder="123 Sizzle Way" type="text" id="address"/></div>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-md">
+        <div><label class="font-label-md text-on-surface-variant">City</label><input class="w-full h-14 rounded-lg border-outline-variant focus:border-primary bg-surface px-md" placeholder="Flavor City" id="city"/></div>
+        <div><label class="font-label-md text-on-surface-variant">State</label><input class="w-full h-14 rounded-lg border-outline-variant focus:border-primary bg-surface px-md" placeholder="NY" id="state"/></div>
+        <div><label class="font-label-md text-on-surface-variant">ZIP Code</label><input class="w-full h-14 rounded-lg border-outline-variant focus:border-primary bg-surface px-md" placeholder="10001" id="zip"/></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-surface-container-lowest p-md rounded-xl shadow-md border border-outline-variant">
+    <div class="flex items-center gap-sm mb-md"><span class="material-symbols-outlined text-primary">account_balance_wallet</span><h2 class="font-headline-md text-headline-md">Payment Method</h2></div>
+    <div class="space-y-md">
+      <div><label class="font-label-md text-on-surface-variant">Cardholder Name</label><input class="w-full h-14 rounded-lg border-outline-variant focus:border-primary bg-surface px-md" placeholder="John Doe" id="card-name"/></div>
+      <div><label class="font-label-md text-on-surface-variant">Card Number</label><input class="w-full h-14 rounded-lg border-outline-variant focus:border-primary bg-surface px-md" placeholder="0000 0000 0000 0000" id="card-number"/></div>
+      <div class="grid grid-cols-2 gap-md">
+        <div><label class="font-label-md text-on-surface-variant">Expiry Date</label><input class="w-full h-14 rounded-lg border-outline-variant focus:border-primary bg-surface px-md" placeholder="MM/YY" id="expiry"/></div>
+        <div><label class="font-label-md text-on-surface-variant">CVV</label><input class="w-full h-14 rounded-lg border-outline-variant focus:border-primary bg-surface px-md" placeholder="***" id="cvv"/></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<aside class="lg:col-span-5 sticky top-[100px]">
+  <div class="bg-surface-container-high p-md rounded-xl shadow-lg border border-primary/10">
+    <h2 class="font-headline-md text-headline-md mb-md">Order Summary</h2>
+    <div id="checkout-items" class="space-y-md mb-lg"></div>
+    <div class="border-t border-outline-variant pt-md space-y-sm">
+      <div class="flex justify-between"><span>Subtotal</span><span id="checkout-subtotal">$0.00</span></div>
+      <div class="flex justify-between"><span>Delivery Fee</span><span id="checkout-delivery">$2.99</span></div>
+      <div class="flex justify-between"><span>Estimated Tax</span><span id="checkout-tax">$0.00</span></div>
+      <div class="flex justify-between text-headline-md font-headline-md pt-sm border-t border-dashed"><span>Total</span><span class="text-primary" id="checkout-total">$0.00</span></div>
+    </div>
+    <button class="w-full mt-lg bg-primary-container text-on-primary-container h-16 rounded-xl font-headline-md flex items-center justify-center gap-md shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all" id="confirm-order-btn">Confirm Order <span class="material-symbols-outlined">arrow_forward</span></button>
+    <div class="mt-md flex items-center justify-center gap-xs text-on-surface-variant/60"><span class="material-symbols-outlined text-sm">lock</span><span class="text-xs font-label-md uppercase">Secure 256-bit SSL Encrypted</span></div>
+  </div>
+</aside>
+</div>
+</main>
+
+<script>
+let cart = JSON.parse(localStorage.getItem('sizzle_cart')) || [];
+
+function renderCheckoutSummary() {
+  const container = document.getElementById('checkout-items');
+  if (!container) return;
+  
+  if (cart.length === 0) {
+    window.location.href = 'carrito.html';
+    return;
+  }
+  
+  let subtotal = 0;
+  let itemsHtml = '';
+  
+  cart.forEach(item => {
+    const itemSubtotal = item.price * item.quantity;
+    subtotal += itemSubtotal;
+    itemsHtml += `
+      <div class="flex gap-md">
+        <div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0"><img src="${item.image}" class="w-full h-full object-cover"></div>
+        <div class="flex-1"><h3 class="font-label-md">${item.name}</h3><div class="flex justify-between mt-xs"><span class="text-sm">x${item.quantity}</span><span class="font-price-display text-primary">$${itemSubtotal.toFixed(2)}</span></div></div>
+      </div>
+    `;
+  });
+  
+  container.innerHTML = itemsHtml;
+  
+  const delivery = subtotal > 0 ? 2.99 : 0;
+  const tax = subtotal * 0.08;
+  const total = subtotal + delivery + tax;
+  
+  document.getElementById('checkout-subtotal').textContent = `$${subtotal.toFixed(2)}`;
+  document.getElementById('checkout-delivery').textContent = `$${delivery.toFixed(2)}`;
+  document.getElementById('checkout-tax').textContent = `$${tax.toFixed(2)}`;
+  document.getElementById('checkout-total').textContent = `$${total.toFixed(2)}`;
+  
+  // Guardar total para la confirmación
+  window.checkoutTotal = total;
+}
+
+function validateForm() {
+  const name = document.getElementById('full-name')?.value;
+  const phone = document.getElementById('phone')?.value;
+  const address = document.getElementById('address')?.value;
+  const city = document.getElementById('city')?.value;
+  
+  if (!name || !phone || !address || !city) {
+    alert('Please fill in all required fields');
+    return false;
+  }
+  return true;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderCheckoutSummary();
+  
+  const confirmBtn = document.getElementById('confirm-order-btn');
+  if (confirmBtn) {
+    confirmBtn.addEventListener('click', () => {
+      if (!validateForm()) return;
+      if (cart.length === 0) {
+        alert('Your cart is empty!');
+        window.location.href = 'carrito.html';
+        return;
+      }
+      
+      confirmBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">progress_activity</span> Processing...';
+      confirmBtn.disabled = true;
+      
+      setTimeout(() => {
+        // Limpiar carrito después de orden confirmada
+        localStorage.setItem('sizzle_cart', JSON.stringify([]));
+        window.location.href = 'PedidoListo.html';
+      }, 2000);
+    });
+  }
+});
+</script>
+</body>
+</html>
