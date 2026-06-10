@@ -1,10 +1,9 @@
-<!-- index.html - Versión corregida -->
 <!DOCTYPE html>
 <html class="light" lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>SizzleBurger | Appetizingly Urgent</title>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>SizzleBurger | Appetizingly Urgent · Responsive</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&amp;family=Hanken+Grotesk:wght@400;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script>
@@ -39,96 +38,110 @@
   }
 </script>
 <style>
-  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+  * { -webkit-tap-highlight-color: transparent; }
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; display: inline-flex; align-items: center; justify-content: center; }
   .hide-scrollbar::-webkit-scrollbar { display: none; }
   .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   .glass-effect { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); }
   .cart-item-enter { animation: slideIn 0.3s ease-out forwards; }
   @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-  .scale-active:active { transform: scale(0.98); }
+  .scale-active:active { transform: scale(0.97); transition: transform 0.12s ease; }
+  @media (max-width: 640px) {
+    .hero-headline-responsive { font-size: 2.25rem !important; line-height: 2.5rem !important; letter-spacing: -0.01em !important; }
+    .section-padding-responsive { padding-top: 3rem !important; padding-bottom: 3rem !important; }
+    .footer-grid-responsive { gap: 1.75rem !important; }
+  }
+  @media (min-width: 641px) and (max-width: 768px) {
+    .hero-headline-responsive { font-size: 2.7rem !important; line-height: 3.2rem !important; }
+  }
+  .btn-feedback { transition: all 0.2s ease; }
+  img { user-select: none; }
 </style>
 </head>
-<body class="bg-surface font-body-md text-on-surface">
+<body class="bg-surface font-body-md text-on-surface antialiased">
 
-<!-- Top Navigation Bar -->
+<!-- Top Navigation Bar - fully responsive with mobile adjustments -->
 <header class="bg-surface shadow-[0px_4px_20px_rgba(0,0,0,0.05)] top-0 sticky z-50">
-<nav class="flex justify-between items-center w-full px-gutter py-base max-w-container-max mx-auto">
-<a class="text-headline-md font-headline-md font-extrabold text-primary" href="index.html">SizzleBurger</a>
-<div class="hidden md:flex items-center gap-md">
+<nav class="flex justify-between items-center w-full px-4 md:px-gutter py-3 md:py-base max-w-container-max mx-auto">
+<a class="text-headline-md font-headline-md font-extrabold text-primary tracking-tight" href="index.html">Sizzle<span class="text-primary-container">Burger</span></a>
+<div class="hidden md:flex items-center gap-5 lg:gap-md">
 <a class="font-label-md text-label-md text-primary border-b-2 border-primary pb-1" href="product.html">Menu</a>
-<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary" href="sucursales.html">Branches</a>
-<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary" href="index.html#offers">Offers</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition" href="sucursales.html">Branches</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition" href="index.html#offers">Offers</a>
 </div>
-<div class="flex items-center gap-md">
-<a href="carrito.html" class="relative p-2 rounded-full hover:bg-surface-container transition-colors">
-<span class="material-symbols-outlined text-primary">shopping_cart</span>
-<span class="absolute -top-1 -right-1 bg-primary-container text-on-primary-container text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-surface" id="cart-badge">0</span>
+<div class="flex items-center gap-2 sm:gap-md">
+<a href="carrito.html" class="relative p-2 rounded-full hover:bg-surface-container transition-colors active:scale-95 scale-active">
+<span class="material-symbols-outlined text-primary text-2xl">shopping_cart</span>
+<span class="absolute -top-1 -right-1 bg-primary-container text-on-primary-container text-[11px] font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-surface shadow-sm" id="cart-badge">0</span>
 </a>
-<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
-<img alt="User" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDur7LuZm3kIMOsf93lnlNZ6BpcsG4tUZbGz3-pZfZcx5XFjLcO9mcF6at0J0BBGVnI4QRuMLlN9X7ZGFTnUyawiT-U1EklSV1mov4Q25lnGcY0toPQuZkAN5ihlTpsWoozJ0pKBInyj8ygJnScUjGp0zNvIr1Wd1c_MzJwYhdCxpg8caoQk3V84FH7nBA32JoJiK70d_KnQfedw77uCXZOuRPy7lpbqZtmVNQGyit-KfRKfsEsJYtmR5ri-F69zlmfpG4ry1e8d_I"/>
+<div class="w-9 h-9 md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-primary-container shadow-sm transition hover:scale-105">
+<img alt="User avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDur7LuZm3kIMOsf93lnlNZ6BpcsG4tUZbGz3-pZfZcx5XFjLcO9mcF6at0J0BBGVnI4QRuMLlN9X7ZGFTnUyawiT-U1EklSV1mov4Q25lnGcY0toPQuZkAN5ihlTpsWoozJ0pKBInyj8ygJnScUjGp0zNvIr1Wd1c_MzJwYhdCxpg8caoQk3V84FH7nBA32JoJiK70d_KnQfedw77uCXZOuRPy7lpbqZtmVNQGyit-KfRKfsEsJYtmR5ri-F69zlmfpG4ry1e8d_I"/>
 </div>
 </div>
 </nav>
 </header>
 
 <main>
-<!-- Hero Section -->
-<section class="relative min-h-[819px] flex items-center overflow-hidden bg-surface-container-low">
-<div class="max-w-container-max mx-auto px-gutter grid grid-cols-1 md:grid-cols-2 gap-lg items-center relative z-10 w-full">
-<div class="space-y-md text-center md:text-left">
-<span class="bg-primary-container text-on-primary-container px-4 py-1.5 rounded-full font-label-md inline-block">FRESHLY FLAME-GRILLED</span>
-<h1 class="font-headline-xl text-headline-xl text-on-surface leading-tight">The Burger That <span class="text-primary">Speaks Your Language.</span></h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">Experience the perfect sizzle. Premium Angus beef, hand-crafted buns, and our secret Sizzle sauce delivered to your doorstep in minutes.</p>
-<div class="flex flex-col sm:flex-row items-center gap-md pt-base">
-<a href="product.html" class="w-full sm:w-auto px-xl py-4 bg-primary-container text-on-primary font-bold rounded-xl shadow-lg active:scale-[0.98] transition-all text-center">Order Now</a>
-<a href="product.html" class="w-full sm:w-auto px-xl py-4 border-2 border-outline text-on-surface font-bold rounded-xl hover:bg-surface-container transition-colors text-center">View Menu</a>
-</div>
-</div>
-<div class="relative group">
-<div class="absolute -inset-4 bg-primary/10 rounded-full blur-3xl"></div>
-<img alt="SizzleBurger Signature" class="relative w-full h-auto drop-shadow-2xl rounded-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFbU86dgq_sBL7LdINS_iZkmIVt1GJqfaIsoEpH9fyNAhNU1jkB4e-vWnZ9n_va-7yOjG35yRhwjC_4f1l_eVd3ct8xnJu3lOuhksfxohc0o5LqigcVtg0QgWPDIqbyBBLww6V0p1a1f-LsUTQ0dk-9Re7w-Q8s4P1oy7_phjh1-hGHgQ0VYH_tvFvfbjLA-4sJA6ATgNOHlxsfBI8yfI3NhqIZ4JII3WL5PaPhSq1OjQR8nMkhhbJ3KmEYcErRu--aV2UMkE-SbI"/>
-</div>
-</div>
-</section>
+  <!-- Hero Section: responsive layout + flexible typography and spacing -->
+  <section class="relative min-h-[700px] md:min-h-[819px] flex items-center overflow-hidden bg-surface-container-low">
+    <div class="max-w-container-max mx-auto px-5 md:px-gutter grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-lg items-center relative z-10 w-full py-12 md:py-0">
+      <div class="space-y-4 sm:space-y-md text-center md:text-left">
+        <span class="bg-primary-container text-on-primary-container px-4 py-1.5 rounded-full font-label-md inline-block text-xs sm:text-sm tracking-wide">🔥 FRESHLY FLAME-GRILLED</span>
+        <h1 class="font-headline-xl hero-headline-responsive text-headline-xl md:text-headline-xl text-on-surface leading-tight">
+          The Burger That <span class="text-primary">Speaks Your Language.</span>
+        </h1>
+        <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mx-auto md:mx-0 px-2 md:px-0">Experience the perfect sizzle. Premium Angus beef, hand-crafted buns, and our secret Sizzle sauce delivered to your doorstep in minutes.</p>
+        <div class="flex flex-col sm:flex-row items-center gap-3 sm:gap-md pt-2 sm:pt-base">
+          <a href="product.html" class="w-full sm:w-auto px-6 md:px-xl py-3 md:py-4 bg-primary-container text-on-primary font-bold rounded-xl shadow-lg active:scale-[0.97] transition-all text-center text-base md:text-lg">Order Now →</a>
+          <a href="product.html" class="w-full sm:w-auto px-6 md:px-xl py-3 md:py-4 border-2 border-outline text-on-surface font-bold rounded-xl hover:bg-surface-container transition-colors text-center">View Menu</a>
+        </div>
+      </div>
+      <div class="relative group mt-8 md:mt-0">
+        <div class="absolute -inset-4 bg-primary/10 rounded-full blur-3xl"></div>
+        <img alt="SizzleBurger Signature juicy burger" class="relative w-full h-auto max-w-md mx-auto md:max-w-full drop-shadow-2xl rounded-2xl transform transition duration-500 group-hover:scale-[1.02]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFbU86dgq_sBL7LdINS_iZkmIVt1GJqfaIsoEpH9fyNAhNU1jkB4e-vWnZ9n_va-7yOjG35yRhwjC_4f1l_eVd3ct8xnJu3lOuhksfxohc0o5LqigcVtg0QgWPDIqbyBBLww6V0p1a1f-LsUTQ0dk-9Re7w-Q8s4P1oy7_phjh1-hGHgQ0VYH_tvFvfbjLA-4sJA6ATgNOHlxsfBI8yfI3NhqIZ4JII3WL5PaPhSq1OjQR8nMkhhbJ3KmEYcErRu--aV2UMkE-SbI"/>
+      </div>
+    </div>
+  </section>
 
-<!-- Products Section -->
-<section class="py-xl bg-surface" id="products">
-<div class="max-w-container-max mx-auto px-gutter">
-<div class="flex justify-between items-center mb-lg">
-<h2 class="font-headline-lg text-headline-lg">Popular <span class="text-primary">Orders</span></h2>
-<a href="product.html" class="text-primary font-label-md hover:underline">View All →</a>
-</div>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md" id="featured-products"></div>
-</div>
-</section>
+  <!-- Products Section: responsive grid + card hover optimizations -->
+  <section class="py-12 md:py-xl bg-surface" id="products">
+    <div class="max-w-container-max mx-auto px-5 md:px-gutter">
+      <div class="flex flex-wrap justify-between items-center mb-6 md:mb-lg">
+        <h2 class="font-headline-lg text-headline-lg md:text-headline-lg">Popular <span class="text-primary">Orders</span></h2>
+        <a href="product.html" class="text-primary font-label-md hover:underline text-sm md:text-base flex items-center gap-1">View All <span class="material-symbols-outlined text-lg">arrow_forward</span></a>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-md" id="featured-products"></div>
+    </div>
+  </section>
 
-<!-- Newsletter Section -->
-<section class="py-xl bg-primary text-on-primary">
-<div class="max-w-container-max mx-auto px-gutter grid grid-cols-1 md:grid-cols-2 gap-lg items-center">
-<div class="space-y-md">
-<h2 class="font-headline-lg text-headline-lg text-white">Get the Sizzle <span class="text-primary-fixed">Delivered</span> to Your Door</h2>
-<p class="font-body-lg text-white/90">Download our app for exclusive rewards, faster checkout, and real-time order tracking.</p>
-</div>
-<div class="flex flex-wrap gap-md">
-<a class="flex items-center gap-3 bg-white text-on-surface px-6 py-3 rounded-2xl font-bold" href="#">📱 App Store</a>
-<a class="flex items-center gap-3 bg-white text-on-surface px-6 py-3 rounded-2xl font-bold" href="#">🤖 Google Play</a>
-</div>
-</div>
-</section>
+  <!-- Newsletter / App Download Section: fully responsive with stacked on mobile -->
+  <section class="py-12 md:py-xl bg-primary text-on-primary">
+    <div class="max-w-container-max mx-auto px-5 md:px-gutter grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-lg items-center">
+      <div class="space-y-3 md:space-y-md text-center md:text-left">
+        <h2 class="font-headline-lg text-headline-lg md:text-headline-lg text-white">Get the Sizzle <span class="text-primary-fixed">Delivered</span> to Your Door</h2>
+        <p class="font-body-lg text-white/90 text-base md:text-lg">Download our app for exclusive rewards, faster checkout, and real-time order tracking.</p>
+      </div>
+      <div class="flex flex-wrap justify-center md:justify-end gap-3 md:gap-md">
+        <a class="flex items-center gap-2 md:gap-3 bg-white text-on-surface px-5 md:px-6 py-2.5 md:py-3 rounded-2xl font-bold shadow-md hover:shadow-xl transition active:scale-95 text-sm md:text-base" href="#">📱 App Store</a>
+        <a class="flex items-center gap-2 md:gap-3 bg-white text-on-surface px-5 md:px-6 py-2.5 md:py-3 rounded-2xl font-bold shadow-md hover:shadow-xl transition active:scale-95 text-sm md:text-base" href="#">🤖 Google Play</a>
+      </div>
+    </div>
+  </section>
 </main>
 
-<!-- Footer -->
-<footer class="bg-surface-container-highest py-xl px-gutter border-t border-outline-variant/30">
-<div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-4 gap-md">
-<div><a class="text-headline-sm font-headline-sm font-bold text-on-surface" href="index.html">SizzleBurger</a><p class="text-on-surface-variant mt-md">Redefining fast food with premium ingredients.</p></div>
-<div><h5 class="font-label-md text-primary mb-md">Quick Links</h5><ul class="space-y-2"><li><a class="text-on-surface-variant hover:underline" href="product.html">Menu</a></li><li><a class="text-on-surface-variant hover:underline" href="sucursales.html">Branches</a></li></ul></div>
-<div><h5 class="font-label-md text-primary mb-md">Support</h5><ul class="space-y-2"><li><a class="text-on-surface-variant hover:underline" href="#">Privacy Policy</a></li><li><a class="text-on-surface-variant hover:underline" href="#">Terms of Service</a></li></ul></div>
-<div><h5 class="font-label-md text-primary mb-md">Contact</h5><p class="text-on-surface-variant">1-800-SIZZLE</p><p class="text-on-surface-variant">hello@sizzleburger.com</p></div>
-</div>
+<!-- Footer: responsive column stacking + improved spacing -->
+<footer class="bg-surface-container-highest py-10 md:py-xl px-5 md:px-gutter border-t border-outline-variant/30">
+  <div class="max-w-container-max mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-md footer-grid-responsive">
+    <div class="text-center sm:text-left"><a class="text-xl font-headline-md font-bold text-on-surface" href="index.html">SizzleBurger</a><p class="text-on-surface-variant mt-2 text-sm md:text-base">Redefining fast food with premium ingredients.</p></div>
+    <div class="text-center sm:text-left"><h5 class="font-label-md text-primary mb-2 md:mb-md text-sm tracking-wide">Quick Links</h5><ul class="space-y-1.5"><li><a class="text-on-surface-variant hover:underline text-sm md:text-base" href="product.html">Menu</a></li><li><a class="text-on-surface-variant hover:underline text-sm md:text-base" href="sucursales.html">Branches</a></li></ul></div>
+    <div class="text-center sm:text-left"><h5 class="font-label-md text-primary mb-2 md:mb-md text-sm tracking-wide">Support</h5><ul class="space-y-1.5"><li><a class="text-on-surface-variant hover:underline text-sm md:text-base" href="#">Privacy Policy</a></li><li><a class="text-on-surface-variant hover:underline text-sm md:text-base" href="#">Terms of Service</a></li></ul></div>
+    <div class="text-center sm:text-left"><h5 class="font-label-md text-primary mb-2 md:mb-md text-sm tracking-wide">Contact</h5><p class="text-on-surface-variant text-sm md:text-base">1-800-SIZZLE</p><p class="text-on-surface-variant text-sm md:text-base break-all">hello@sizzleburger.com</p></div>
+  </div>
+  <div class="max-w-container-max mx-auto mt-8 md:mt-12 pt-4 border-t border-outline-variant/30 text-center text-on-surface-variant text-xs md:text-sm">© 2025 SizzleBurger – All rights reserved. Sizzling since 2025.</div>
 </footer>
 
 <script>
-// Productos para mostrar en la página principal
+// Enhanced responsive friendly product list with proper interaction for all screens
 const featuredProducts = [
   { id: "p1", name: "Sizzle Classic", price: 12.99, image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCFJlK-zNEBI1nClOudXrUztswc_MHIqQBdB5tv_iQ5FW1xgEuqUhsMrT58TybaSxtsgRbQ1uKxST6cG2K8BDIKfrZIgXJde9HlXQEJOl_lPtJ1clFUFaOF7ufJWZlV2D4oO9RxIs5dpBsje0pAqEpbmOo9LWz2USmXAm4w9_2WD7OXvNUscXccninEZCwDknGlayL29AOseUzj9AGCnnABP7X4CYKHNAo3HVkRgyC1ZXHL02sGAuIcii6FNJY6AT28OIMJWEiaM5U", desc: "Double smash patty with secret sauce" },
   { id: "p2", name: "Truffle Swiss", price: 15.50, image: "https://lh3.googleusercontent.com/aida-public/AB6AXuArY_6iYfjCIDQVZV0-uHUcxektkepEbbf_3sj3csRK3YcPAERW4nmChYh-CdfqXf2gu8YCf0WgcmeRFeyYVS2rN1UVDEGZnG-0Iyr7618ITqMmxAodDNxGffZCiV1l6CSD9uQbhnIGMw8dnDS9-H2uho_BUiPh-t6rRozIbeRSEMt8hD79mdTTr6pL1YB1uDJgPf1A02KwOfxOOlCFN6SVLgTYB_68SP_q8dZKlcv5ZkMgOmcSeLNoxtz4f7A2XIDUB0FxniNaQ0I", desc: "Mushrooms, swiss, truffle aioli" },
@@ -136,7 +149,7 @@ const featuredProducts = [
   { id: "p6", name: "Salted Caramel Shake", price: 6.99, image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDX5VOW9uoxukjlNmEZK8L3h9EDjCfrgA3iQInk7gyck45Lh2MfBHfkm-2epBAYbOZm4DrmxYtGEVeaCmxDKiqwkNR0urnw75ksHwaDeCEz-tEVWl6PJI-siknMLTHugQ3OfDQanePyEEksL4Izt7MpyIU8Wogaknq4xO1BfbBm_4aDNp0GhxbttjMmkx-4F1bgTgLYTeD3ED-UYrmPAkMuRXdT16vlqK6RbPgD7kqKwoh4hHDMuP2xbpWIYw-Bn2xJAPIAM8eBhAs", desc: "Vanilla bean ice cream, salted caramel" }
 ];
 
-// Sistema de Carrito Global
+// Cart system (persistent)
 let cart = JSON.parse(localStorage.getItem('sizzle_cart')) || [];
 
 function saveCart() {
@@ -149,11 +162,12 @@ function updateCartBadge() {
   if (badge) {
     const total = cart.reduce((sum, item) => sum + item.quantity, 0);
     badge.textContent = total;
-    badge.classList.toggle('hidden', total === 0);
+    if (total === 0) badge.classList.add('hidden'); else badge.classList.remove('hidden');
   }
 }
 
-function addToCart(productId, name, price, image) {
+// Improved addToCart with touch/click feedback
+function addToCart(productId, name, price, image, btnElement = null) {
   const existing = cart.find(item => item.id === productId);
   if (existing) {
     existing.quantity++;
@@ -162,46 +176,70 @@ function addToCart(productId, name, price, image) {
   }
   saveCart();
   
-  // Animación de feedback
-  const btn = event?.target?.closest('button');
-  if (btn) {
-    btn.innerHTML = '✓ Added!';
+  // visual feedback (robust)
+  let targetBtn = btnElement;
+  if (!targetBtn && event && event.currentTarget) targetBtn = event.currentTarget;
+  else if (!targetBtn && window.event && window.event.target) targetBtn = window.event.target.closest('button');
+  
+  if (targetBtn && typeof targetBtn.innerHTML === 'string') {
+    const originalHTML = targetBtn.innerHTML;
+    targetBtn.innerHTML = '<span class="material-symbols-outlined text-sm">check_circle</span> Added!';
+    targetBtn.classList.add('scale-active');
     setTimeout(() => {
-      if (btn.innerHTML.includes('Added')) btn.innerHTML = 'Add to Cart';
-    }, 1500);
+      if (targetBtn && targetBtn.innerHTML !== originalHTML) {
+        targetBtn.innerHTML = originalHTML;
+        targetBtn.classList.remove('scale-active');
+      }
+    }, 1300);
   }
 }
 
+// Render products with responsive card design and accessible buttons
 function renderFeaturedProducts() {
   const container = document.getElementById('featured-products');
   if (!container) return;
   
   container.innerHTML = featuredProducts.map(p => `
-    <div class="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all flex flex-col group">
-      <div class="h-56 overflow-hidden relative">
-        <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+    <div class="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col group border border-outline-variant/20">
+      <div class="h-52 sm:h-56 overflow-hidden relative bg-surface-container-low">
+        <img src="${p.image}" alt="${p.name}" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
       </div>
-      <div class="p-md flex flex-col flex-1">
+      <div class="p-4 md:p-md flex flex-col flex-1">
         <div class="flex justify-between items-start mb-2">
-          <h3 class="font-headline-md text-headline-md">${p.name}</h3>
-          <span class="font-price-display text-price-display text-primary">$${p.price}</span>
+          <h3 class="font-headline-md text-headline-md text-base sm:text-[22px] leading-tight">${p.name}</h3>
+          <span class="font-price-display text-price-display text-primary font-extrabold">$${p.price}</span>
         </div>
-        <p class="text-on-surface-variant font-body-md mb-md">${p.desc}</p>
-        <button onclick="addToCart('${p.id}', '${p.name}', ${p.price}, '${p.image}')" class="w-full bg-primary-container text-on-primary py-3 rounded-xl font-bold flex items-center justify-center gap-2 active:scale-95 transition-all">
-          <span class="material-symbols-outlined">add_shopping_cart</span> Add to Cart
+        <p class="text-on-surface-variant font-body-md text-sm sm:text-base mb-3 md:mb-md leading-relaxed">${p.desc}</p>
+        <button data-product='${JSON.stringify(p)}' class="add-to-cart-btn w-full bg-primary-container text-on-primary py-2.5 md:py-3 rounded-xl font-bold flex items-center justify-center gap-2 active:scale-95 transition-all shadow-sm hover:shadow-md text-sm sm:text-base">
+          <span class="material-symbols-outlined text-xl">add_shopping_cart</span> Add to Cart
         </button>
       </div>
     </div>
   `).join('');
+  
+  // Attach event listeners to each button dynamically (better than global onclick for large lists)
+  document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const productData = btn.getAttribute('data-product');
+      if (productData) {
+        try {
+          const product = JSON.parse(productData);
+          addToCart(product.id, product.name, product.price, product.image, btn);
+        } catch(e) { console.warn(e); }
+      }
+    });
+  });
 }
 
-// Inicialización
+// Initialize all components once DOM ready
 document.addEventListener('DOMContentLoaded', () => {
   renderFeaturedProducts();
   updateCartBadge();
-  
-  // Hacer addToCart global
-  window.addToCart = addToCart;
+  // make sure any global addToCart call fallback still works (for any legacy inline)
+  window.addToCart = (id, name, price, img) => {
+    addToCart(id, name, price, img, null);
+  };
 });
 </script>
 </body>

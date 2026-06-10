@@ -1,10 +1,9 @@
-<!-- product.html - Versión corregida con carrito integrado -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>SizzleBurger | Menu</title>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" name="viewport"/>
+<title>SizzleBurger | Menu · Responsive cards</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Hanken+Grotesk:wght@400;600&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -28,55 +27,136 @@
   .hide-scrollbar::-webkit-scrollbar { display: none; }
   .cart-added { animation: pulse 0.3s ease; }
   @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+
+  /* Estilo para móvil: cards horizontales (imagen izquierda, texto derecha) */
+  @media (max-width: 640px) {
+    .mobile-horizontal-card {
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: stretch !important;
+      gap: 0.75rem !important;
+      padding: 0.75rem !important;
+    }
+    .mobile-horizontal-card .product-img-container {
+      width: 110px !important;
+      flex-shrink: 0 !important;
+      height: auto !important;
+      border-radius: 1rem !important;
+      overflow: hidden !important;
+    }
+    .mobile-horizontal-card .product-img-container img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      min-height: 110px;
+    }
+    .mobile-horizontal-card .product-info {
+      flex: 1 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      padding: 0.25rem 0 0.25rem 0 !important;
+    }
+    .mobile-horizontal-card .product-header {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: baseline !important;
+      flex-wrap: wrap !important;
+      margin-bottom: 0.25rem !important;
+    }
+    .mobile-horizontal-card .product-title {
+      font-size: 1.1rem !important;
+      line-height: 1.3rem !important;
+      font-weight: 800 !important;
+    }
+    .mobile-horizontal-card .product-price {
+      font-size: 1rem !important;
+      font-weight: 800 !important;
+    }
+    .mobile-horizontal-card .product-desc {
+      font-size: 0.75rem !important;
+      line-height: 1rem !important;
+      margin-bottom: 0.5rem !important;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .mobile-horizontal-card .add-btn {
+      padding: 0.5rem 0.25rem !important;
+      font-size: 0.75rem !important;
+      gap: 0.25rem !important;
+    }
+    .mobile-horizontal-card .add-btn span {
+      font-size: 1rem !important;
+    }
+    /* Ajuste del grid en móvil para que se vea como lista */
+    .products-mobile-list {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 0.75rem !important;
+    }
+    .products-mobile-list > div {
+      width: 100% !important;
+    }
+  }
+  /* Transición suave */
+  .product-card-transition {
+    transition: all 0.2s ease;
+  }
 </style>
 </head>
-<body class="bg-background text-on-surface">
+<body class="bg-background text-on-surface overflow-x-hidden">
 
 <header class="bg-surface shadow-[0px_4px_20px_rgba(0,0,0,0.05)] sticky top-0 z-50">
-<nav class="flex justify-between items-center w-full px-gutter py-base max-w-container-max mx-auto">
-<a class="text-headline-md font-headline-md font-extrabold text-primary" href="index.html">SizzleBurger</a>
-<div class="hidden md:flex items-center gap-md">
+<nav class="flex justify-between items-center w-full px-4 md:px-gutter py-3 md:py-base max-w-container-max mx-auto">
+<a class="text-xl md:text-headline-md font-headline-md font-extrabold text-primary" href="index.html">SizzleBurger</a>
+<div class="hidden md:flex items-center gap-4 md:gap-md">
 <a class="font-label-md text-label-md text-primary border-b-2 border-primary pb-1" href="product.html">Menu</a>
 <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary" href="sucursales.html">Branches</a>
 <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary" href="index.html#offers">Offers</a>
 </div>
-<div class="flex items-center gap-md">
+<div class="flex items-center gap-3 md:gap-md">
 <a href="carrito.html" class="relative p-2 rounded-full hover:bg-surface-container transition-colors">
-<span class="material-symbols-outlined text-primary">shopping_cart</span>
+<span class="material-symbols-outlined text-primary text-xl md:text-2xl">shopping_cart</span>
 <span class="absolute -top-1 -right-1 bg-primary-container text-on-primary-container text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-surface" id="cart-badge">0</span>
 </a>
-<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
-<img alt="User" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoFtXdUsyGLxj5FT4VxQ2TV5VUHt4h_QFvwlECsR6vSbbAAP34yRU0JAE4lEbtDtQBVCNzTRE4pwozJKx81kyX0G6LuUFWTES0SXxwB7VVzLMX0HRpANI6CsCGgg2FM6iVkvKBWi6HNN6hN-qOvD3kWXwKQMV9sxmBNl-GbFhjm5zGzUTQukjXDaLnT9EsOTextrrf5QfFidYNX2yetBttPnOY2m4hKVW9FXeTRYZY22vmys5kzDbOmBeyuWE8DI826bNR3Bdx53I"/>
-</div>
+<button id="menu-btn" class="md:hidden p-2">
+<span class="material-symbols-outlined text-primary">menu</span>
+</button>
 </div>
 </nav>
+
+<!-- Menú móvil -->
+<div id="mobile-menu" class="fixed inset-0 bg-surface z-50 hidden flex-col pt-20 px-6">
+    <button id="close-menu" class="absolute top-4 right-4 p-2">
+        <span class="material-symbols-outlined text-2xl">close</span>
+    </button>
+    <div class="flex flex-col gap-6 text-center">
+        <a href="product.html" class="text-2xl font-bold py-3 text-primary">Menu</a>
+        <a href="sucursales.html" class="text-2xl font-bold py-3 hover:text-primary">Branches</a>
+        <a href="index.html" class="text-2xl font-bold py-3 hover:text-primary">Home</a>
+    </div>
+</div>
 </header>
 
-<main class="max-w-container-max mx-auto px-gutter pb-xl">
-<section class="py-lg">
-<div class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-lg">
-<div><h1 class="font-headline-xl text-headline-xl text-on-surface">Our Menu</h1><p class="font-body-lg text-on-surface-variant">Premium smash burgers and sides</p></div>
-<div class="w-full md:max-w-md"><div class="relative"><input class="w-full h-14 pl-12 pr-4 rounded-xl border-outline-variant bg-surface-container-lowest focus:border-primary focus:ring-1 focus:ring-primary" placeholder="Search menu..." type="text" id="search-input"/><span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span></div></div>
+<main class="max-w-container-max mx-auto px-4 md:px-gutter pb-12 md:pb-xl">
+<section class="py-6 md:py-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 md:gap-md mb-6 md:mb-lg">
+<div><h1 class="text-3xl md:text-headline-xl text-headline-xl text-on-surface">Our Menu</h1><p class="text-base md:text-body-lg text-on-surface-variant">Premium smash burgers and sides</p></div>
+<div class="w-full md:max-w-md"><div class="relative"><input class="w-full h-12 md:h-14 pl-10 md:pl-12 pr-4 rounded-xl border-outline-variant bg-surface-container-lowest focus:border-primary focus:ring-1 focus:ring-primary text-base" placeholder="Search menu..." type="text" id="search-input"/><span class="material-symbols-outlined absolute left-3 md:left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg md:text-2xl">search</span></div></div>
 </div>
-<div class="flex gap-sm overflow-x-auto hide-scrollbar pb-xs" id="category-filters">
-  <button class="active-chip px-md py-2.5 rounded-full font-label-md whitespace-nowrap bg-inverse-surface text-white" data-cat="all">🍔 All</button>
-  <button class="bg-secondary-container text-on-surface px-md py-2.5 rounded-full font-label-md whitespace-nowrap hover:bg-outline-variant" data-cat="burgers">🍔 Burgers</button>
-  <button class="bg-secondary-container text-on-surface px-md py-2.5 rounded-full font-label-md whitespace-nowrap hover:bg-outline-variant" data-cat="sides">🍟 Sides</button>
-  <button class="bg-secondary-container text-on-surface px-md py-2.5 rounded-full font-label-md whitespace-nowrap hover:bg-outline-variant" data-cat="drinks">🥤 Drinks</button>
+<div class="flex gap-2 md:gap-sm overflow-x-auto hide-scrollbar pb-2 md:pb-xs" id="category-filters">
+  <button class="active-chip px-3 md:px-md py-1.5 md:py-2.5 rounded-full font-label-md whitespace-nowrap bg-inverse-surface text-white text-sm md:text-base" data-cat="all">🍔 All</button>
+  <button class="bg-secondary-container text-on-surface px-3 md:px-md py-1.5 md:py-2.5 rounded-full font-label-md whitespace-nowrap hover:bg-outline-variant text-sm md:text-base" data-cat="burgers">🍔 Burgers</button>
+  <button class="bg-secondary-container text-on-surface px-3 md:px-md py-1.5 md:py-2.5 rounded-full font-label-md whitespace-nowrap hover:bg-outline-variant text-sm md:text-base" data-cat="sides">🍟 Sides</button>
+  <button class="bg-secondary-container text-on-surface px-3 md:px-md py-1.5 md:py-2.5 rounded-full font-label-md whitespace-nowrap hover:bg-outline-variant text-sm md:text-base" data-cat="drinks">🥤 Drinks</button>
 </div>
 </section>
 
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-md" id="products-grid"></div>
+<!-- Contenedor de productos: se le añadirá clase condicional en móvil mediante JS pero también con CSS condicional -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-md" id="products-grid"></div>
 </main>
-
-<footer class="bg-surface-container-highest mt-xl py-xl px-gutter">
-<div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-4 gap-md">
-<div><a class="text-headline-sm font-headline-sm font-bold text-on-surface" href="index.html">SizzleBurger</a><p class="text-on-surface-variant mt-md">Delivering the finest smash burgers since 2024.</p></div>
-<div><h5 class="font-label-md text-primary mb-md">Quick Links</h5><ul><li><a class="text-on-surface-variant hover:underline" href="product.html">Menu</a></li><li><a class="text-on-surface-variant hover:underline" href="sucursales.html">Branches</a></li></ul></div>
-<div><h5 class="font-label-md text-primary mb-md">Support</h5><ul><li><a class="text-on-surface-variant hover:underline" href="#">Privacy Policy</a></li><li><a class="text-on-surface-variant hover:underline" href="#">Terms of Service</a></li></ul></div>
-<div><p class="text-on-surface-variant">© 2024 SizzleBurger Inc.</p></div>
-</div>
-</footer>
 
 <script>
 // Catálogo completo de productos
@@ -91,7 +171,6 @@ const products = [
   { id: "p8", name: "Crispy Wings", price: 11.25, category: "sides", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBJ2PeB2x2WPZX_Dj3BKbpt_Zr-QuSLBkNIv7ccmx4WztYYnx9ixvHb1QntRjBqSAhagVpYYi68DBk4GUldNRbkbjsv6g6pLjodwJd3EyxQjY9R7hMBthGA1oyvAxAFYePRrhwMKs1hNYF7dqXhXnrV_nMLPJXnv87PMtK5CWhNPury1QqNx7INnW0Dni3vNXg9Jogpk7ECK_jQwilDSBt9BGM48DYgzwV2gq7BJ5Nsi-jZMUC7o7pXWZ9eGW-zJNRL0ng5pufLlAk", desc: "6 jumbo wings, Buffalo or Garlic Parm" }
 ];
 
-// Sistema de Carrito
 let cart = JSON.parse(localStorage.getItem('sizzle_cart')) || [];
 
 function saveCart() {
@@ -104,11 +183,11 @@ function updateCartBadge() {
   if (badge) {
     const total = cart.reduce((sum, item) => sum + item.quantity, 0);
     badge.textContent = total;
-    badge.classList.toggle('hidden', total === 0);
   }
 }
 
-function addToCart(productId, name, price, image) {
+// Función mejorada para agregar al carrito
+function addToCart(productId, name, price, image, eventElement = null) {
   const existing = cart.find(item => item.id === productId);
   if (existing) {
     existing.quantity++;
@@ -117,14 +196,29 @@ function addToCart(productId, name, price, image) {
   }
   saveCart();
   
-  const btn = event?.target?.closest('button');
+  // feedback visual en el botón
+  let btn = null;
+  if (eventElement) {
+    btn = eventElement;
+  } else if (window.event && window.event.target) {
+    btn = window.event.target.closest('button');
+  }
+  
   if (btn) {
-    const originalText = btn.innerHTML;
-    btn.innerHTML = '<span class="material-symbols-outlined">check</span> Added!';
-    setTimeout(() => { btn.innerHTML = originalText; }, 1500);
+    const originalInner = btn.innerHTML;
+    btn.innerHTML = '<span class="material-symbols-outlined text-sm md:text-base">check_circle</span> Added!';
+    btn.classList.add('scale-active');
+    setTimeout(() => {
+      if (btn) {
+        btn.innerHTML = originalInner;
+        btn.classList.remove('scale-active');
+      }
+    }, 1200);
   }
 }
 
+// Renderizado con diseño responsive: en móvil (width <= 640px) se mostrará horizontal (imagen izquierda, texto derecha)
+// En desktop mantiene el layout vertical original.
 function renderProducts(filter = "all", search = "") {
   const container = document.getElementById('products-grid');
   if (!container) return;
@@ -133,21 +227,97 @@ function renderProducts(filter = "all", search = "") {
   if (filter !== "all") filtered = filtered.filter(p => p.category === filter);
   if (search) filtered = filtered.filter(p => p.name.toLowerCase().includes(search.toLowerCase()) || p.desc.toLowerCase().includes(search.toLowerCase()));
   
-  container.innerHTML = filtered.map(p => `
-    <div class="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all flex flex-col group">
-      <div class="h-56 overflow-hidden relative"><img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"></div>
-      <div class="p-md flex flex-col flex-1">
-        <div class="flex justify-between items-start mb-2"><h3 class="font-headline-md text-headline-md">${p.name}</h3><span class="font-price-display text-price-display text-primary">$${p.price}</span></div>
-        <p class="text-on-surface-variant font-body-md mb-md flex-grow">${p.desc}</p>
-        <button onclick="addToCart('${p.id}', '${p.name}', ${p.price}, '${p.image}')" class="w-full bg-primary-container text-on-primary py-3 rounded-xl font-bold flex items-center justify-center gap-2 active:scale-95 transition-all">
-          <span class="material-symbols-outlined">add_shopping_cart</span> Add to Cart
-        </button>
+  // Detectar si es móvil mediante matchMedia (pantalla hasta 640px)
+  const isMobile = window.matchMedia("(max-width: 640px)").matches;
+  
+  if (isMobile) {
+    // Modo móvil: cards horizontales con imagen izquierda, texto derecha
+    container.classList.add("products-mobile-list");
+    container.classList.remove("grid", "sm:grid-cols-2", "lg:grid-cols-3", "xl:grid-cols-4");
+    container.innerHTML = filtered.map(p => `
+      <div class="bg-white rounded-2xl shadow-md hover:shadow-lg transition-all product-card-transition mobile-horizontal-card overflow-hidden">
+        <div class="product-img-container w-28 h-auto flex-shrink-0">
+          <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover" style="min-height: 110px;">
+        </div>
+        <div class="product-info flex-1 flex flex-col justify-between py-1 pr-1">
+          <div>
+            <div class="product-header flex justify-between items-baseline flex-wrap gap-1">
+              <h3 class="product-title font-extrabold text-on-surface">${p.name}</h3>
+              <span class="product-price font-price-display text-primary font-extrabold">$${p.price}</span>
+            </div>
+            <p class="product-desc text-on-surface-variant text-xs leading-tight mt-1">${p.desc}</p>
+          </div>
+          <button class="add-btn w-full bg-primary-container text-on-primary font-bold rounded-xl flex items-center justify-center gap-1 active:scale-95 transition-all mt-2 py-2 text-xs">
+            <span class="material-symbols-outlined text-sm">add_shopping_cart</span> Add to Cart
+          </button>
+        </div>
       </div>
-    </div>
-  `).join('');
+    `).join('');
+  } else {
+    // Modo escritorio / tablet: layout vertical original con grid
+    container.classList.remove("products-mobile-list");
+    container.classList.add("grid", "sm:grid-cols-2", "lg:grid-cols-3", "xl:grid-cols-4");
+    container.innerHTML = filtered.map(p => `
+      <div class="bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all flex flex-col group">
+        <div class="h-48 md:h-56 overflow-hidden relative"><img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"></div>
+        <div class="p-4 md:p-md flex flex-col flex-1">
+          <div class="flex justify-between items-start mb-2"><h3 class="font-bold text-lg md:text-headline-md">${p.name}</h3><span class="font-price-display text-price-display text-primary text-base md:text-xl">$${p.price}</span></div>
+          <p class="text-on-surface-variant font-body-md text-sm md:text-base mb-3 md:mb-md flex-grow">${p.desc}</p>
+          <button class="w-full bg-primary-container text-on-primary py-2.5 md:py-3 rounded-xl font-bold flex items-center justify-center gap-2 active:scale-95 transition-all text-sm md:text-base">
+            <span class="material-symbols-outlined text-base md:text-xl">add_shopping_cart</span> Add to Cart
+          </button>
+        </div>
+      </div>
+    `).join('');
+  }
+  
+  // Asignar eventos a todos los botones "Add to Cart" después de renderizar (para ambos modos)
+  document.querySelectorAll('#products-grid button').forEach(btn => {
+    // Buscar el producto asociado al botón
+    const card = btn.closest('.mobile-horizontal-card, .bg-white');
+    if (!card) return;
+    let productItem = null;
+    // Extraer nombre y precio desde elementos cercanos
+    let nameEl, priceEl;
+    if (isMobile) {
+      nameEl = card.querySelector('.product-title');
+      priceEl = card.querySelector('.product-price');
+    } else {
+      nameEl = card.querySelector('h3');
+      priceEl = card.querySelector('.text-primary');
+    }
+    if (nameEl && priceEl) {
+      const rawName = nameEl.innerText.trim();
+      const rawPrice = parseFloat(priceEl.innerText.replace('$', ''));
+      const imgSrc = card.querySelector('img')?.src || '';
+      const foundProduct = products.find(p => p.name === rawName && Math.abs(p.price - rawPrice) < 0.01);
+      if (foundProduct) {
+        productItem = foundProduct;
+      } else {
+        // fallback por nombre
+        productItem = products.find(p => p.name === rawName);
+      }
+      if (productItem) {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          addToCart(productItem.id, productItem.name, productItem.price, productItem.image, btn);
+        });
+      }
+    }
+  });
 }
 
-// Inicialización
+// Manejo de resize para redibujar correctamente en cambio de orientación / tamaño
+let resizeTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => {
+    const activeCat = document.querySelector('#category-filters button.bg-inverse-surface')?.dataset.cat || 'all';
+    const searchVal = document.getElementById('search-input')?.value || '';
+    renderProducts(activeCat, searchVal);
+  }, 150);
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   renderProducts();
   updateCartBadge();
@@ -167,12 +337,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
   
-  // Búsqueda
   const searchInput = document.getElementById('search-input');
   if (searchInput) {
     searchInput.addEventListener('input', (e) => {
       const activeCat = document.querySelector('#category-filters button.bg-inverse-surface')?.dataset.cat || 'all';
       renderProducts(activeCat, e.target.value);
+    });
+  }
+
+  // Menú móvil
+  const menuBtn = document.getElementById('menu-btn');
+  const closeBtn = document.getElementById('close-menu');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (menuBtn) {
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    });
+  }
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      document.body.style.overflow = '';
     });
   }
 });

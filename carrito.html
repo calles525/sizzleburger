@@ -1,9 +1,8 @@
-<!-- carrito.html - Versión corregida -->
 <!DOCTYPE html>
 <html class="scroll-smooth" lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" name="viewport"/>
 <title>Your Cart | SizzleBurger</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Hanken+Grotesk:wght@400;600&amp;display=swap" rel="stylesheet"/>
@@ -27,75 +26,165 @@
   .cart-item-enter { animation: slideIn 0.3s ease-out forwards; }
   @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
   .scale-active:active { transform: scale(0.98); }
+
+  /* Estilos para carrito en móvil: cards horizontales (imagen izquierda, contenido derecha) */
+  @media (max-width: 640px) {
+    .cart-horizontal-mobile {
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      gap: 0.75rem !important;
+      padding: 0.75rem !important;
+    }
+    .cart-horizontal-mobile .cart-img-wrapper {
+      width: 80px !important;
+      flex-shrink: 0 !important;
+      height: 80px !important;
+      border-radius: 0.75rem !important;
+      overflow: hidden !important;
+    }
+    .cart-horizontal-mobile .cart-img-wrapper img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+    }
+    .cart-horizontal-mobile .cart-info {
+      flex: 1 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 0.25rem !important;
+    }
+    .cart-horizontal-mobile .cart-name-price {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: baseline !important;
+      flex-wrap: wrap !important;
+    }
+    .cart-horizontal-mobile .cart-name {
+      font-size: 1rem !important;
+      font-weight: 800 !important;
+      line-height: 1.25rem !important;
+    }
+    .cart-horizontal-mobile .cart-price {
+      font-size: 0.9rem !important;
+      font-weight: 800 !important;
+    }
+    .cart-horizontal-mobile .cart-actions {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      margin-top: 0.25rem !important;
+    }
+    .cart-horizontal-mobile .quantity-controls {
+      display: flex !important;
+      align-items: center !important;
+      background-color: #e2dfde !important;
+      border-radius: 9999px !important;
+      padding: 0.125rem !important;
+    }
+    .cart-horizontal-mobile .quantity-controls button {
+      width: 28px !important;
+      height: 28px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+    .cart-horizontal-mobile .quantity-controls span:not(.material-symbols-outlined) {
+      min-width: 28px !important;
+      text-align: center !important;
+      font-weight: 700 !important;
+      font-size: 0.875rem !important;
+    }
+    .cart-horizontal-mobile .item-subtotal {
+      font-weight: 800 !important;
+      font-size: 0.85rem !important;
+      margin-left: 0.5rem !important;
+    }
+    .cart-horizontal-mobile .delete-btn {
+      margin-left: 0.5rem !important;
+    }
+    .cart-horizontal-mobile .delete-btn span {
+      font-size: 1.1rem !important;
+    }
+  }
+  /* Animación suave */
+  .cart-item-transition {
+    transition: all 0.2s ease;
+  }
 </style>
 </head>
-<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col">
+<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col overflow-x-hidden">
 
 <header class="bg-surface shadow-[0px_4px_20px_rgba(0,0,0,0.05)] sticky top-0 z-50">
-<nav class="flex justify-between items-center w-full px-gutter py-base max-w-container-max mx-auto">
-<a class="text-headline-md font-headline-md font-extrabold text-primary" href="index.html">SizzleBurger</a>
-<div class="hidden md:flex items-center gap-md">
+<nav class="flex justify-between items-center w-full px-4 md:px-gutter py-3 md:py-base max-w-container-max mx-auto">
+<a class="text-xl md:text-headline-md font-headline-md font-extrabold text-primary" href="index.html">SizzleBurger</a>
+<div class="hidden md:flex items-center gap-4 md:gap-md">
 <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary" href="product.html">Menu</a>
 <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary" href="sucursales.html">Branches</a>
 <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary" href="index.html">Offers</a>
 </div>
-<div class="flex items-center gap-sm">
-<a href="carrito.html" class="relative p-base scale-active transition-transform duration-150">
-<span class="material-symbols-outlined text-primary">shopping_cart</span>
+<div class="flex items-center gap-3">
+<a href="carrito.html" class="relative p-2 scale-active transition-transform duration-150">
+<span class="material-symbols-outlined text-primary text-xl md:text-2xl">shopping_cart</span>
 <span class="absolute top-1 right-1 bg-primary-container text-on-primary-container text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-surface" id="cart-badge">0</span>
 </a>
-<img alt="User Profile" class="w-8 h-8 rounded-full border border-outline-variant object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1WWmHu_Y28XM7gZS4AHjwFRLIt8nPxR6BJaRwuctXJTGaqb26GFY1g12lJzEMwClu37rWL7YlYgs62dTvbi3Fpcu1jfsBUI-7XfwaSLsqRLWyJwMSm7FjnSnRhupT23eIKVQT5KSqCm4AtS6Bu7WgfoHfx3M6jc2fISY1Mo6BNQTPixMTVAonM5azFzCUueSK-2fz4TnOJglE_HqhrvFQh4SLleDUg8E6wEDlBQo9N_TxjwAQFaq1go8vDCMh1F2uStPnuR8QJeg"/>
+<button id="menu-btn" class="md:hidden p-2">
+<span class="material-symbols-outlined text-primary">menu</span>
+</button>
 </div>
 </nav>
+
+<!-- Menú móvil -->
+<div id="mobile-menu" class="fixed inset-0 bg-surface z-50 hidden flex-col pt-20 px-6">
+    <button id="close-menu" class="absolute top-4 right-4 p-2">
+        <span class="material-symbols-outlined text-2xl">close</span>
+    </button>
+    <div class="flex flex-col gap-6 text-center">
+        <a href="product.html" class="text-2xl font-bold py-3 hover:text-primary">Menu</a>
+        <a href="sucursales.html" class="text-2xl font-bold py-3 hover:text-primary">Branches</a>
+        <a href="index.html" class="text-2xl font-bold py-3 hover:text-primary">Home</a>
+    </div>
+</div>
 </header>
 
-<main class="flex-grow max-w-container-max w-full mx-auto px-gutter py-lg">
-<div class="flex flex-col lg:flex-row gap-lg">
+<main class="flex-grow max-w-container-max w-full mx-auto px-4 md:px-gutter py-6 md:py-lg pb-24 md:pb-12">
+<div class="flex flex-col lg:flex-row gap-4 md:gap-lg">
 <div class="flex-grow">
-<div class="flex items-center justify-between mb-md">
-<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg">Your Cart</h1>
-<button class="text-primary font-label-md text-label-md hover:underline" onclick="clearCart()">Clear all</button>
+<div class="flex items-center justify-between mb-4 md:mb-md">
+<h1 class="text-2xl md:text-headline-lg font-bold md:font-headline-lg">Your Cart</h1>
+<button class="text-primary font-label-md text-sm md:text-label-md hover:underline" onclick="clearCart()">Clear all</button>
 </div>
-<div class="hidden flex-col items-center justify-center py-xl bg-surface-container-lowest rounded-xl border-2 border-dashed border-outline-variant" id="empty-cart">
-<span class="material-symbols-outlined text-6xl text-outline-variant mb-md">shopping_basket</span>
-<p class="font-headline-md text-headline-md text-on-surface-variant">Your cart is empty</p>
-<p class="font-body-md text-body-md text-secondary mb-md">Add some sizzle to your day!</p>
-<a href="product.html" class="bg-primary-container text-on-primary-container px-lg py-sm rounded-full font-label-md text-label-md scale-active transition-transform">Browse Menu</a>
+<div class="hidden flex-col items-center justify-center py-8 md:py-xl bg-surface-container-lowest rounded-xl border-2 border-dashed border-outline-variant" id="empty-cart">
+<span class="material-symbols-outlined text-5xl md:text-6xl text-outline-variant mb-3 md:mb-md">shopping_basket</span>
+<p class="font-headline-md text-xl md:text-headline-md text-on-surface-variant">Your cart is empty</p>
+<p class="font-body-md text-sm md:text-body-md text-secondary mb-3 md:mb-md">Add some sizzle to your day!</p>
+<a href="product.html" class="bg-primary-container text-on-primary-container px-4 md:px-lg py-2 md:py-sm rounded-full font-label-md text-sm md:text-label-md scale-active transition-transform">Browse Menu</a>
 </div>
-<div class="space-y-md" id="cart-items-container"></div>
+<div class="space-y-3 md:space-y-md" id="cart-items-container"></div>
 </div>
-<aside class="w-full lg:w-[400px]">
-<div class="bg-surface-container rounded-2xl p-md shadow-lg sticky top-24 border border-outline-variant">
-<h2 class="font-headline-md text-headline-md mb-md">Order Summary</h2>
-<div class="space-y-sm mb-md pb-md border-b border-outline-variant">
-<div class="flex justify-between"><span class="text-on-surface-variant">Subtotal</span><span class="font-bold" id="summary-subtotal">$0.00</span></div>
-<div class="flex justify-between"><span class="text-on-surface-variant">Delivery Fee</span><span id="summary-delivery">$2.99</span></div>
-<div class="flex justify-between"><span class="text-on-surface-variant">Estimated Tax</span><span id="summary-tax">$0.00</span></div>
-</div>
-<div class="flex justify-between items-center mb-lg"><span class="font-headline-md text-headline-md">Total</span><span class="font-headline-lg text-headline-lg text-primary" id="summary-total">$0.00</span></div>
-<a href="checkout.html" class="w-full bg-primary-container text-on-primary-container font-headline-md text-headline-md py-md rounded-xl shadow-md hover:brightness-110 transition-all scale-active flex items-center justify-center gap-base mb-md" id="checkout-btn">Go to Checkout <span class="material-symbols-outlined">arrow_forward</span></a>
-<div class="flex items-center justify-center gap-xs text-on-surface-variant font-label-md"><span class="material-symbols-outlined text-sm">verified</span>Secure payment processing</div>
-</div>
+<aside class="w-full lg:w-[400px] mt-6 lg:mt-0">
+  <div class="bg-surface-container rounded-2xl p-4 md:p-md shadow-lg sticky top-24 border border-outline-variant">
+    <h2 class="font-headline-md text-xl md:text-headline-md mb-3 md:mb-md">Order Summary</h2>
+    <div class="space-y-2 md:space-y-sm mb-3 md:mb-md pb-3 md:pb-md border-b border-outline-variant">
+      <div class="flex justify-between text-sm md:text-base"><span class="text-on-surface-variant">Subtotal</span><span class="font-bold" id="summary-subtotal">$0.00</span></div>
+      <div class="flex justify-between text-sm md:text-base"><span class="text-on-surface-variant">Delivery Fee</span><span id="summary-delivery">$2.99</span></div>
+      <div class="flex justify-between text-sm md:text-base"><span class="text-on-surface-variant">Estimated Tax</span><span id="summary-tax">$0.00</span></div>
+    </div>
+    <div class="flex justify-between items-center mb-4 md:mb-lg"><span class="font-headline-md text-lg md:text-headline-md">Total</span><span class="font-headline-lg text-xl md:text-headline-lg text-primary" id="summary-total">$0.00</span></div>
+    <a href="checkout.html" class="w-full bg-primary-container text-on-primary-container font-headline-md text-base md:text-headline-md py-3 md:py-md rounded-xl shadow-md hover:brightness-110 transition-all scale-active flex items-center justify-center gap-2 md:gap-base mb-3 md:mb-md" id="checkout-btn">Go to Checkout <span class="material-symbols-outlined text-lg md:text-2xl">arrow_forward</span></a>
+    <div class="flex items-center justify-center gap-1 md:gap-xs text-on-surface-variant font-label-md text-xs md:text-sm"><span class="material-symbols-outlined text-sm md:text-base">verified</span>Secure payment processing</div>
+  </div>
 </aside>
 </div>
 </main>
 
-<footer class="bg-surface-container-highest mt-xl py-xl px-gutter">
-<div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-4 gap-md">
-<div><a class="text-headline-sm font-headline-sm font-bold text-on-surface" href="index.html">SizzleBurger</a><p class="text-on-surface-variant mt-md">Serving the tastiest burgers in town since 2012.</p></div>
-<div><h5 class="font-label-md text-primary mb-md">Helpful Links</h5><ul><li><a class="text-on-surface-variant hover:underline" href="#">Privacy Policy</a></li><li><a class="text-on-surface-variant hover:underline" href="#">Terms of Service</a></li></ul></div>
-<div><h5 class="font-label-md text-primary mb-md">Contact</h5><p class="text-on-surface-variant">support@sizzleburger.com</p><p class="text-on-surface-variant">1-800-SIZZLE</p></div>
-<div><p class="text-on-surface-variant">© 2024 SizzleBurger Inc.</p></div>
-</div>
-</footer>
-
-<div class="md:hidden fixed bottom-0 left-0 right-0 bg-surface border-t border-outline-variant p-md shadow-lg flex items-center justify-between z-50">
-<div><p class="font-label-md text-secondary">Total</p><p class="font-price-display text-price-display text-primary" id="mobile-total">$0.00</p></div>
-<a href="checkout.html" class="bg-primary-container text-on-primary-container px-lg py-sm rounded-full font-headline-md shadow-md">Checkout</a>
+<!-- Barra inferior fija para móvil -->
+<div class="md:hidden fixed bottom-0 left-0 right-0 bg-surface border-t border-outline-variant p-4 shadow-lg flex items-center justify-between z-50">
+<div><p class="font-label-md text-secondary text-xs">Total</p><p class="font-price-display text-price-display text-primary text-lg" id="mobile-total">$0.00</p></div>
+<a href="checkout.html" class="bg-primary-container text-on-primary-container px-5 md:px-lg py-2.5 md:py-sm rounded-full font-headline-md text-sm shadow-md">Checkout</a>
 </div>
 
 <script>
-// Sistema de Carrito Global
 let cart = JSON.parse(localStorage.getItem('sizzle_cart')) || [];
 
 function saveCart() {
@@ -133,6 +222,7 @@ function clearCart() {
   saveCart();
 }
 
+// Función para renderizar items con diseño responsive: en móvil (<=640px) horizontal, en desktop vertical con imagen arriba
 function renderCartItems() {
   const container = document.getElementById('cart-items-container');
   const emptyState = document.getElementById('empty-cart');
@@ -155,25 +245,60 @@ function renderCartItems() {
   
   let subtotal = 0;
   let itemsHtml = '';
+  const isMobile = window.matchMedia("(max-width: 640px)").matches;
   
   cart.forEach(item => {
     const itemSubtotal = item.price * item.quantity;
     subtotal += itemSubtotal;
-    itemsHtml += `
-      <div class="cart-item-enter bg-surface rounded-xl p-md flex flex-col sm:flex-row gap-md items-center shadow-md border border-surface-container-high" data-id="${item.id}">
-        <div class="w-full sm:w-32 h-32 rounded-lg overflow-hidden flex-shrink-0"><img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover"></div>
-        <div class="flex-grow w-full text-center sm:text-left"><h3 class="font-headline-md text-headline-md">${item.name}</h3><p class="text-primary font-price-display text-price-display mt-xs">$${item.price.toFixed(2)}</p></div>
-        <div class="flex items-center gap-md">
-          <div class="flex items-center bg-secondary-container rounded-full p-xs">
-            <button class="w-10 h-10 flex items-center justify-center rounded-full transition-colors scale-active" onclick="updateQty('${item.id}', -1)"><span class="material-symbols-outlined">remove</span></button>
-            <span class="w-10 text-center font-bold">${item.quantity}</span>
-            <button class="w-10 h-10 flex items-center justify-center rounded-full transition-colors scale-active" onclick="updateQty('${item.id}', 1)"><span class="material-symbols-outlined">add</span></button>
+    
+    if (isMobile) {
+      // Modo móvil: card horizontal (imagen izquierda, info derecha)
+      itemsHtml += `
+        <div class="cart-item-enter cart-item-transition bg-surface rounded-xl shadow-md border border-surface-container-high cart-horizontal-mobile" data-id="${item.id}">
+          <div class="cart-img-wrapper">
+            <img src="${item.image}" alt="${item.name}" loading="lazy">
           </div>
-          <div class="text-right min-w-[80px]"><p class="font-price-display text-price-display text-on-surface">$${itemSubtotal.toFixed(2)}</p></div>
-          <button class="text-outline hover:text-error transition-colors p-base" onclick="removeItem('${item.id}')"><span class="material-symbols-outlined">delete</span></button>
+          <div class="cart-info">
+            <div class="cart-name-price">
+              <span class="cart-name text-on-surface">${item.name}</span>
+              <span class="cart-price text-primary">$${item.price.toFixed(2)}</span>
+            </div>
+            <div class="cart-actions">
+              <div class="quantity-controls">
+                <button class="scale-active transition-colors" onclick="updateQty('${item.id}', -1)">
+                  <span class="material-symbols-outlined text-sm">remove</span>
+                </button>
+                <span>${item.quantity}</span>
+                <button class="scale-active transition-colors" onclick="updateQty('${item.id}', 1)">
+                  <span class="material-symbols-outlined text-sm">add</span>
+                </button>
+              </div>
+              <div class="item-subtotal text-on-surface">$${itemSubtotal.toFixed(2)}</div>
+              <button class="delete-btn text-outline hover:text-error transition-colors" onclick="removeItem('${item.id}')">
+                <span class="material-symbols-outlined text-base">delete</span>
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
-    `;
+      `;
+    } else {
+      // Modo escritorio / tablet: card vertical con imagen arriba, controles abajo (diseño original mejorado)
+      itemsHtml += `
+        <div class="cart-item-enter bg-surface rounded-xl p-3 md:p-md flex flex-col sm:flex-row gap-3 md:gap-md items-center shadow-md border border-surface-container-high" data-id="${item.id}">
+          <div class="w-24 md:w-32 h-24 md:h-32 rounded-lg overflow-hidden flex-shrink-0"><img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover"></div>
+          <div class="flex-grow w-full text-center sm:text-left"><h3 class="font-headline-md text-lg md:text-headline-md">${item.name}</h3><p class="text-primary font-price-display text-price-display text-base md:text-xl mt-1 md:mt-xs">$${item.price.toFixed(2)}</p></div>
+          <div class="flex items-center gap-2 md:gap-md">
+            <div class="flex items-center bg-secondary-container rounded-full p-1">
+              <button class="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full transition-colors scale-active" onclick="updateQty('${item.id}', -1)"><span class="material-symbols-outlined text-base md:text-xl">remove</span></button>
+              <span class="w-8 md:w-10 text-center font-bold text-sm md:text-base">${item.quantity}</span>
+              <button class="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full transition-colors scale-active" onclick="updateQty('${item.id}', 1)"><span class="material-symbols-outlined text-base md:text-xl">add</span></button>
+            </div>
+            <div class="text-right min-w-[70px] md:min-w-[80px]"><p class="font-price-display text-price-display text-on-surface text-sm md:text-base">$${itemSubtotal.toFixed(2)}</p></div>
+            <button class="text-outline hover:text-error transition-colors p-1 md:p-base" onclick="removeItem('${item.id}')"><span class="material-symbols-outlined text-base md:text-xl">delete</span></button>
+          </div>
+        </div>
+      `;
+    }
   });
   
   container.innerHTML = itemsHtml;
@@ -189,17 +314,23 @@ function renderCartItems() {
   document.getElementById('mobile-total').textContent = `$${total.toFixed(2)}`;
 }
 
-// Exponer funciones globalmente
+// Re-render al cambiar tamaño de pantalla (para que pase de horizontal a vertical automáticamente)
+let resizeTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => {
+    renderCartItems();
+  }, 150);
+});
+
 window.updateQty = updateQty;
 window.removeItem = removeItem;
 window.clearCart = clearCart;
 
-// Inicialización
 document.addEventListener('DOMContentLoaded', () => {
   renderCartItems();
   updateCartBadge();
   
-  // Guardar subtotal para checkout
   const checkoutBtn = document.getElementById('checkout-btn');
   if (checkoutBtn) {
     checkoutBtn.addEventListener('click', (e) => {
@@ -207,6 +338,25 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         alert('Your cart is empty!');
       }
+    });
+  }
+
+  // Menú móvil
+  const menuBtn = document.getElementById('menu-btn');
+  const closeBtn = document.getElementById('close-menu');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  if (menuBtn) {
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    });
+  }
+  
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      document.body.style.overflow = '';
     });
   }
 });

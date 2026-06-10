@@ -1,9 +1,8 @@
-<!-- checkout.html - Versión corregida con datos del carrito -->
 <!DOCTYPE html>
 <html class="light" lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" name="viewport"/>
 <title>Checkout | SizzleBurger</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Hanken+Grotesk:wght@400;600&amp;display=swap" rel="stylesheet"/>
@@ -24,71 +23,72 @@
 </script>
 <style>
   .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+  input, select, textarea { font-size: 16px !important; }
 </style>
 </head>
-<body class="bg-background text-on-background">
+<body class="bg-background text-on-background overflow-x-hidden">
 
 <header class="sticky top-0 z-50 shadow-md bg-surface">
-<nav class="flex justify-between items-center w-full px-gutter py-base max-w-container-max mx-auto">
-<a class="text-headline-md font-headline-md font-extrabold text-primary" href="index.html">SizzleBurger</a>
-<div class="flex items-center gap-sm">
+<nav class="flex justify-between items-center w-full px-4 md:px-gutter py-3 md:py-base max-w-container-max mx-auto">
+<a class="text-xl md:text-headline-md font-headline-md font-extrabold text-primary" href="index.html">SizzleBurger</a>
+<div class="flex items-center gap-2 md:gap-sm">
 <a href="carrito.html" class="p-2 rounded-full hover:bg-surface-container">
-<span class="material-symbols-outlined text-primary">shopping_cart</span>
+<span class="material-symbols-outlined text-primary text-xl md:text-2xl">shopping_cart</span>
 </a>
 </div>
 </nav>
 </header>
 
-<main class="max-w-container-max mx-auto px-gutter py-lg">
-<div class="mb-lg"><h1 class="font-headline-xl text-headline-xl text-on-surface">Secure Checkout</h1><p class="font-body-lg text-on-surface-variant">Review your items and complete your order.</p></div>
+<main class="max-w-container-max mx-auto px-4 md:px-gutter py-6 md:py-lg pb-24 md:pb-12">
+<div class="mb-4 md:mb-lg"><h1 class="font-headline-xl text-3xl md:text-headline-xl text-on-surface">Secure Checkout</h1><p class="text-base md:text-body-lg text-on-surface-variant">Review your items and complete your order.</p></div>
 
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg items-start">
-<div class="lg:col-span-7 space-y-md">
-  <section class="bg-surface-container-lowest p-md rounded-xl shadow-md border border-outline-variant">
-    <div class="flex items-center gap-sm mb-md"><span class="material-symbols-outlined text-primary">person</span><h2 class="font-headline-md text-headline-md">Contact Details</h2></div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-md">
-      <div><label class="font-label-md text-on-surface-variant">Full Name</label><input class="w-full h-14 rounded-lg border-outline-variant focus:border-primary bg-surface px-md" placeholder="John Doe" type="text" id="full-name"/></div>
-      <div><label class="font-label-md text-on-surface-variant">Phone Number</label><input class="w-full h-14 rounded-lg border-outline-variant focus:border-primary bg-surface px-md" placeholder="+1 (555) 000-0000" type="tel" id="phone"/></div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-lg items-start">
+<div class="lg:col-span-7 space-y-3 md:space-y-md">
+  <section class="bg-surface-container-lowest p-4 md:p-md rounded-xl shadow-md border border-outline-variant">
+    <div class="flex items-center gap-2 md:gap-sm mb-3 md:mb-md"><span class="material-symbols-outlined text-primary">person</span><h2 class="font-headline-md text-lg md:text-headline-md">Contact Details</h2></div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-md">
+      <div><label class="font-label-md text-on-surface-variant text-sm">Full Name</label><input class="w-full h-12 md:h-14 rounded-lg border-outline-variant focus:border-primary bg-surface px-3 md:px-md text-base" placeholder="John Doe" type="text" id="full-name"/></div>
+      <div><label class="font-label-md text-on-surface-variant text-sm">Phone Number</label><input class="w-full h-12 md:h-14 rounded-lg border-outline-variant focus:border-primary bg-surface px-3 md:px-md text-base" placeholder="+1 (555) 000-0000" type="tel" id="phone"/></div>
     </div>
   </section>
 
-  <section class="bg-surface-container-lowest p-md rounded-xl shadow-md border border-outline-variant">
-    <div class="flex items-center gap-sm mb-md"><span class="material-symbols-outlined text-primary">local_shipping</span><h2 class="font-headline-md text-headline-md">Delivery Information</h2></div>
-    <div class="space-y-md">
-      <div><label class="font-label-md text-on-surface-variant">Street Address</label><input class="w-full h-14 rounded-lg border-outline-variant focus:border-primary bg-surface px-md" placeholder="123 Sizzle Way" type="text" id="address"/></div>
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-md">
-        <div><label class="font-label-md text-on-surface-variant">City</label><input class="w-full h-14 rounded-lg border-outline-variant focus:border-primary bg-surface px-md" placeholder="Flavor City" id="city"/></div>
-        <div><label class="font-label-md text-on-surface-variant">State</label><input class="w-full h-14 rounded-lg border-outline-variant focus:border-primary bg-surface px-md" placeholder="NY" id="state"/></div>
-        <div><label class="font-label-md text-on-surface-variant">ZIP Code</label><input class="w-full h-14 rounded-lg border-outline-variant focus:border-primary bg-surface px-md" placeholder="10001" id="zip"/></div>
+  <section class="bg-surface-container-lowest p-4 md:p-md rounded-xl shadow-md border border-outline-variant">
+    <div class="flex items-center gap-2 md:gap-sm mb-3 md:mb-md"><span class="material-symbols-outlined text-primary">local_shipping</span><h2 class="font-headline-md text-lg md:text-headline-md">Delivery Information</h2></div>
+    <div class="space-y-3 md:space-y-md">
+      <div><label class="font-label-md text-on-surface-variant text-sm">Street Address</label><input class="w-full h-12 md:h-14 rounded-lg border-outline-variant focus:border-primary bg-surface px-3 md:px-md text-base" placeholder="123 Sizzle Way" type="text" id="address"/></div>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-md">
+        <div><label class="font-label-md text-on-surface-variant text-sm">City</label><input class="w-full h-12 md:h-14 rounded-lg border-outline-variant focus:border-primary bg-surface px-3 md:px-md text-base" placeholder="Flavor City" id="city"/></div>
+        <div><label class="font-label-md text-on-surface-variant text-sm">State</label><input class="w-full h-12 md:h-14 rounded-lg border-outline-variant focus:border-primary bg-surface px-3 md:px-md text-base" placeholder="NY" id="state"/></div>
+        <div><label class="font-label-md text-on-surface-variant text-sm">ZIP Code</label><input class="w-full h-12 md:h-14 rounded-lg border-outline-variant focus:border-primary bg-surface px-3 md:px-md text-base" placeholder="10001" id="zip"/></div>
       </div>
     </div>
   </section>
 
-  <section class="bg-surface-container-lowest p-md rounded-xl shadow-md border border-outline-variant">
-    <div class="flex items-center gap-sm mb-md"><span class="material-symbols-outlined text-primary">account_balance_wallet</span><h2 class="font-headline-md text-headline-md">Payment Method</h2></div>
-    <div class="space-y-md">
-      <div><label class="font-label-md text-on-surface-variant">Cardholder Name</label><input class="w-full h-14 rounded-lg border-outline-variant focus:border-primary bg-surface px-md" placeholder="John Doe" id="card-name"/></div>
-      <div><label class="font-label-md text-on-surface-variant">Card Number</label><input class="w-full h-14 rounded-lg border-outline-variant focus:border-primary bg-surface px-md" placeholder="0000 0000 0000 0000" id="card-number"/></div>
-      <div class="grid grid-cols-2 gap-md">
-        <div><label class="font-label-md text-on-surface-variant">Expiry Date</label><input class="w-full h-14 rounded-lg border-outline-variant focus:border-primary bg-surface px-md" placeholder="MM/YY" id="expiry"/></div>
-        <div><label class="font-label-md text-on-surface-variant">CVV</label><input class="w-full h-14 rounded-lg border-outline-variant focus:border-primary bg-surface px-md" placeholder="***" id="cvv"/></div>
+  <section class="bg-surface-container-lowest p-4 md:p-md rounded-xl shadow-md border border-outline-variant">
+    <div class="flex items-center gap-2 md:gap-sm mb-3 md:mb-md"><span class="material-symbols-outlined text-primary">account_balance_wallet</span><h2 class="font-headline-md text-lg md:text-headline-md">Payment Method</h2></div>
+    <div class="space-y-3 md:space-y-md">
+      <div><label class="font-label-md text-on-surface-variant text-sm">Cardholder Name</label><input class="w-full h-12 md:h-14 rounded-lg border-outline-variant focus:border-primary bg-surface px-3 md:px-md text-base" placeholder="John Doe" id="card-name"/></div>
+      <div><label class="font-label-md text-on-surface-variant text-sm">Card Number</label><input class="w-full h-12 md:h-14 rounded-lg border-outline-variant focus:border-primary bg-surface px-3 md:px-md text-base" placeholder="0000 0000 0000 0000" id="card-number"/></div>
+      <div class="grid grid-cols-2 gap-3 md:gap-md">
+        <div><label class="font-label-md text-on-surface-variant text-sm">Expiry Date</label><input class="w-full h-12 md:h-14 rounded-lg border-outline-variant focus:border-primary bg-surface px-3 md:px-md text-base" placeholder="MM/YY" id="expiry"/></div>
+        <div><label class="font-label-md text-on-surface-variant text-sm">CVV</label><input class="w-full h-12 md:h-14 rounded-lg border-outline-variant focus:border-primary bg-surface px-3 md:px-md text-base" placeholder="***" id="cvv"/></div>
       </div>
     </div>
   </section>
 </div>
 
-<aside class="lg:col-span-5 sticky top-[100px]">
-  <div class="bg-surface-container-high p-md rounded-xl shadow-lg border border-primary/10">
-    <h2 class="font-headline-md text-headline-md mb-md">Order Summary</h2>
-    <div id="checkout-items" class="space-y-md mb-lg"></div>
-    <div class="border-t border-outline-variant pt-md space-y-sm">
-      <div class="flex justify-between"><span>Subtotal</span><span id="checkout-subtotal">$0.00</span></div>
-      <div class="flex justify-between"><span>Delivery Fee</span><span id="checkout-delivery">$2.99</span></div>
-      <div class="flex justify-between"><span>Estimated Tax</span><span id="checkout-tax">$0.00</span></div>
-      <div class="flex justify-between text-headline-md font-headline-md pt-sm border-t border-dashed"><span>Total</span><span class="text-primary" id="checkout-total">$0.00</span></div>
+<aside class="lg:col-span-5">
+  <div class="bg-surface-container-high p-4 md:p-md rounded-xl shadow-lg border border-primary/10 sticky top-24">
+    <h2 class="font-headline-md text-lg md:text-headline-md mb-3 md:mb-md">Order Summary</h2>
+    <div id="checkout-items" class="space-y-3 md:space-y-md mb-4 md:mb-lg max-h-80 overflow-y-auto"></div>
+    <div class="border-t border-outline-variant pt-3 md:pt-md space-y-2 md:space-y-sm">
+      <div class="flex justify-between text-sm md:text-base"><span>Subtotal</span><span id="checkout-subtotal">$0.00</span></div>
+      <div class="flex justify-between text-sm md:text-base"><span>Delivery Fee</span><span id="checkout-delivery">$2.99</span></div>
+      <div class="flex justify-between text-sm md:text-base"><span>Estimated Tax</span><span id="checkout-tax">$0.00</span></div>
+      <div class="flex justify-between text-headline-md font-headline-md pt-2 md:pt-sm border-t border-dashed"><span class="text-base md:text-headline-md">Total</span><span class="text-primary text-lg md:text-headline-md" id="checkout-total">$0.00</span></div>
     </div>
-    <button class="w-full mt-lg bg-primary-container text-on-primary-container h-16 rounded-xl font-headline-md flex items-center justify-center gap-md shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all" id="confirm-order-btn">Confirm Order <span class="material-symbols-outlined">arrow_forward</span></button>
-    <div class="mt-md flex items-center justify-center gap-xs text-on-surface-variant/60"><span class="material-symbols-outlined text-sm">lock</span><span class="text-xs font-label-md uppercase">Secure 256-bit SSL Encrypted</span></div>
+    <button class="w-full mt-4 md:mt-lg bg-primary-container text-on-primary-container h-12 md:h-16 rounded-xl font-headline-md text-base md:text-xl flex items-center justify-center gap-2 md:gap-md shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all" id="confirm-order-btn">Confirm Order <span class="material-symbols-outlined text-lg md:text-2xl">arrow_forward</span></button>
+    <div class="mt-3 md:mt-md flex items-center justify-center gap-1 md:gap-xs text-on-surface-variant/60"><span class="material-symbols-outlined text-sm">lock</span><span class="text-xs font-label-md uppercase">Secure 256-bit SSL Encrypted</span></div>
   </div>
 </aside>
 </div>
@@ -113,9 +113,9 @@ function renderCheckoutSummary() {
     const itemSubtotal = item.price * item.quantity;
     subtotal += itemSubtotal;
     itemsHtml += `
-      <div class="flex gap-md">
-        <div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0"><img src="${item.image}" class="w-full h-full object-cover"></div>
-        <div class="flex-1"><h3 class="font-label-md">${item.name}</h3><div class="flex justify-between mt-xs"><span class="text-sm">x${item.quantity}</span><span class="font-price-display text-primary">$${itemSubtotal.toFixed(2)}</span></div></div>
+      <div class="flex gap-2 md:gap-md">
+        <div class="w-16 md:w-20 h-16 md:h-20 rounded-lg overflow-hidden flex-shrink-0"><img src="${item.image}" class="w-full h-full object-cover"></div>
+        <div class="flex-1"><h3 class="font-label-md text-sm md:text-base">${item.name}</h3><div class="flex justify-between mt-1 md:mt-xs"><span class="text-xs md:text-sm">x${item.quantity}</span><span class="font-price-display text-primary text-sm md:text-base">$${itemSubtotal.toFixed(2)}</span></div></div>
       </div>
     `;
   });
@@ -131,7 +131,6 @@ function renderCheckoutSummary() {
   document.getElementById('checkout-tax').textContent = `$${tax.toFixed(2)}`;
   document.getElementById('checkout-total').textContent = `$${total.toFixed(2)}`;
   
-  // Guardar total para la confirmación
   window.checkoutTotal = total;
 }
 
@@ -165,7 +164,6 @@ document.addEventListener('DOMContentLoaded', () => {
       confirmBtn.disabled = true;
       
       setTimeout(() => {
-        // Limpiar carrito después de orden confirmada
         localStorage.setItem('sizzle_cart', JSON.stringify([]));
         window.location.href = 'PedidoListo.html';
       }, 2000);
